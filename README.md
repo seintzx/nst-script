@@ -1,3 +1,3 @@
 # nst
 
-Bundle of userscript for [torn.com](https://www.torn.com/2460991)
+Bundle of userscripts for [torn.com](https://www.torn.com/2460991)
