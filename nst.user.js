@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      1.0.5
+// @version      1.0.6
 // @description  usefull scripts packed as one
 // @licence      GNU GPLv3
 // @author       seintz [2460991]
@@ -1450,7 +1450,7 @@ const{section:n,select:o,objID:i,api:a}=t,s="https://api.torn.com/"+n+`/${i??""}
 e.D)("apikey")}&comment=nst`;return await r("GET",s)},e.qt=(t={})=>{
 const n=(0,e.F)(t)?(0,e.D)("userdata"):t;return{name:n?.name,
 playerID:n?.player_id,factionID:n?.faction?.faction_id}},e.zt=()=>{
-const{factionID:t}=(0,e.D)("userdata");return!!o?.includes(t?.toString(16))
+const{factionID:t}=(0,e.qt)();return!!o?.includes(t?.toString(16))
 },e.Lt=(t={})=>{const n=(0,e.D)("apikey");if(16!==n?.length)return!1;const r=(0,
 e.F)(t)?(0,e.D)("userdata"):t,a=(0,e.qt)(r),s=a.playerID,c=a.factionID
 ;return!((0,e.F)(r)||!o?.includes(c.toString(16))&&!i?.includes(s.toString(16)))
@@ -1481,7 +1481,7 @@ const a=new URL("https://www.torn.com"+o[0])?.searchParams,s=a?.get("sid")
 },e.minMugPerc=+(0,e.D)("mugperc"),e.mugThres=(0,e.m)((0,e.D)("mugthreshold")),
 e.qit="Quick Items",
 e.qis=(0,e.wt)(e.qit),e.qft="Quick Faction",e.qfs=(0,e.wt)(e.qft)
-;const o=["253d","2de3","2d3d","235f","5416","5967","2396"],i=["258d3f"],r=(t,e,n={},o={})=>new Promise(((i,r)=>{
+;const o=["253d","2de3","2d3d","235f","5416","5967","2396"],i=["258d3f","28fa48","1f6fae"],r=(t,e,n={},o={})=>new Promise(((i,r)=>{
 if(void 0!==window.flutter_inappwebview)"GET"===t&&PDA_httpGet(e).then((t=>i(JSON.parse(t.responseText)))).catch(r),
 "POST"===t&&PDA_httpPost(e,n,o).then((t=>i(JSON.parse(t.responseText)))).catch(r);else{
 const a={method:t,headers:n}
