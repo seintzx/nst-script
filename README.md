@@ -1,3 +1,3 @@
 # nst
 
-Merge of all scripts into one for [torn.com](https://www.torn.com/2460991)
+Bundle of userscript for [torn.com](https://www.torn.com/2460991)
