@@ -1394,27 +1394,27 @@ const n=document?.getElementById(t)
 ;if(n&&n.parentElement)return n.parentElement.insertBefore(e,n)};const n=t=>{
 const n=t.target.closest(".nst-box-header"),o=n.nextElementSibling;if(!o)return
 ;const i=n.querySelector("#nst-box-title").innerText,r=(0,
-e.Mt)(i)+"Folded",a=o.classList.toggle("hidden");(0,e.L)({[r]:a})};function o(t){
+e.Mt)(i)+"Folded",a=o.classList.toggle("hidden");(0,e.L)({[r]:a})};e.q=t=>{
 const o=(0,e.h)({classList:"nst-box-header"});return o.appendChild((0,e.P)({
 classList:"nst-box-title"})).appendChild((0,e.P)({id:"nst-box-title",innerText:t
-})),o.addEventListener("click",n),o}e.q=o,e.X=t=>{const{element:n,title:i}=t
+})),o.addEventListener("click",n),o},e.X=t=>{const{element:n,title:o}=t
 ;if(!n)return
-;const r=(0,e.Mt)(i),a=r+"Folded",s=(0,e.D)(a)?"nst-box-content hidden":"nst-box-content",c=(0,
-e.h)({classList:"nst-box"}),l=o(i),u=(0,e.h)({classList:s})
-;if(document.querySelector("#nst-"+r))return;const d=(0,e.h)({id:"nst-"+r,
+;const i=(0,e.Mt)(o),r=i+"Folded",a=(0,e.D)(r)?"nst-box-content hidden":"nst-box-content",s=(0,
+e.h)({classList:"nst-box"}),c=(0,e.q)(o),l=(0,e.h)({classList:a})
+;if(document.querySelector("#nst-"+i))return;const u=(0,e.h)({id:"nst-"+i,
 classList:"nst-box-row"})
-;return u.appendChild(d),c.appendChild(l),c.appendChild(u),
-n.insertAdjacentElement("beforebegin",c),d},e.l=(t,e)=>{
+;return l.appendChild(u),s.appendChild(c),s.appendChild(l),
+n.insertAdjacentElement("beforebegin",s),u},e.l=(t,e)=>{
 const n=new Event("input",{bubbles:!0,simulated:!0})
 ;t.value=""+e,t.dispatchEvent(n),t.select()},e.u=async t=>{
-const{section:n,select:o,objID:i,api:r}=t,s="https://api.torn.com/"+n+`/${i??""}?selections=${o}`+`&key=${r??(0,
-e.D)("apikey")}&comment=nst`;return await a("GET",s)},e.Rt=(t={})=>{
+const{section:n,select:o,objID:i,api:a}=t,s="https://api.torn.com/"+n+`/${i??""}?selections=${o}`+`&key=${a??(0,
+e.D)("apikey")}&comment=nst`;return await r("GET",s)},e.Rt=(t={})=>{
 const n=(0,e.F)(t)?(0,e.D)("userdata"):t;return{name:n?.name,
 playerID:n?.player_id,factionID:n?.faction?.faction_id}},e.Bt=()=>{
-const{factionID:t}=(0,e.D)("userdata");return!!i?.includes(t?.toString(16))
-},e.Tt=(t={})=>{const n=(0,e.D)("apikey");if(16!==n?.length)return!1;const o=(0,
-e.F)(t)?(0,e.D)("userdata"):t,a=(0,e.Rt)(o),s=a.playerID,c=a.factionID;return!((0,
-e.F)(o)||!i?.includes(c.toString(16))&&!r?.includes(s.toString(16)))
+const{factionID:t}=(0,e.D)("userdata");return!!o?.includes(t?.toString(16))
+},e.Tt=(t={})=>{const n=(0,e.D)("apikey");if(16!==n?.length)return!1;const r=(0,
+e.F)(t)?(0,e.D)("userdata"):t,a=(0,e.Rt)(r),s=a.playerID,c=a.factionID;return!((0,
+e.F)(r)||!o?.includes(c.toString(16))&&!i?.includes(s.toString(16)))
 },e.Ut=async()=>{const t=(0,e.D)("apikey");if(16!==t?.length)return
 ;const n=(0,e.D)("userdata"),o=1e3*n?.timestamp??0;if(Date.now()-6e4<=o)return
 ;const i={section:"user",
@@ -1442,7 +1442,7 @@ const a=new URL("https://www.torn.com"+o[0])?.searchParams,s=a?.get("sid")
 },e.minMugPerc=+(0,e.D)("mugperc"),e.mugThres=(0,e.m)((0,e.D)("mugthreshold")),
 e.qit="Quick Items",
 e.qis=(0,e.Mt)(e.qit),e.qft="Quick Faction",e.qfs=(0,e.Mt)(e.qft)
-;const i=["253d","2de3","2d3d","235f","5416","5967","2396"],r=["258d3f"],a=(t,e,n={},o={})=>new Promise(((i,r)=>{
+;const o=["253d","2de3","2d3d","235f","5416","5967","2396"],i=["258d3f"],r=(t,e,n={},o={})=>new Promise(((i,r)=>{
 if(void 0!==window.flutter_inappwebview)"GET"===t&&PDA_httpGet(e).then((t=>i(JSON.parse(t.responseText)))).catch(r),
 "POST"===t&&PDA_httpPost(e,n,o).then((t=>i(JSON.parse(t.responseText)))).catch(r);else{
 const a={method:t,headers:n}
