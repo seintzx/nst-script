@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      1.0.9
+// @version      1.1.0
 // @description  usefull scripts packed as one
 // @licence      GNU GPLv3
 // @author       seintz [2460991]
@@ -757,11 +757,12 @@ l:["258d3f","28fa48","1f6fae"],u:["253d","2de3","2d3d","235f","5416","2396"]})},
 const e=t?.target
 ;"INPUT"===e?.tagName&&(e.className.includes("buyAmountInput")&&(t=>{
 const e=t?.closest("div[class^=buyMenu]")?.querySelector("span[class^=amount]"),n=e?.innerText?.match(/\d+/)?.[0]??"1"
-;(0,o.p)(t,n)})(e),e.className.includes("input-money")&&(async t=>{if(!t)return
+;(0,o.p)(t,Math.max((0,o.h)(n),1e4).toString())
+})(e),e.className.includes("input-money")&&(async t=>{if(!t)return
 ;const e=t.closest("li")?"li":"div[class^=row]",n=t?.closest(e)?.querySelector("img")?.src.match(/\d+/)?.[0]
 ;if(!n)return;const i={section:"market",select:"bazaar",objID:n
-},r=await(0,o.h)(i);if(!r?.status)return
-;const{bazaar:a}=r,s=(0,o.v)(a[1]?.cost??"")-1;(0,o.k)(t,s.toString())
+},r=await(0,o.v)(i);if(!r?.status)return
+;const{bazaar:a}=r,s=(0,o.h)(a[1]?.cost??"")-1;(0,o.k)(t,s.toString())
 })(e),"clear-all"==e.className&&(t=>{
 const e=t?.closest("li")?.querySelector("div.name-wrap"),n=e?.innerText?.match(/x(\d+)/)?.[1]??"1"
 ;t.className.includes("removeAmount")?(0,o.p)(t,n):(0,o.k)(t,n)
@@ -769,7 +770,7 @@ const e=t?.closest("li")?.querySelector("div.name-wrap"),n=e?.innerText?.match(/
 const e=t?.closest("div[class^=row]")?.querySelector("div[class^=desc]"),n=e?.innerText?.match(/x(\d+)/)?.[1]??"1"
 ;(0,o.p)(t,n)})(e))}))}},913:(t,e,n)=>{Object.defineProperty(e,"__esModule",{
 value:!0}),e._=void 0;const o=n(185);e._=async()=>{const t={section:"user",
-select:"bazaar",objID:(0,o.L)("userId")??""},e=await(0,o.h)(t)
+select:"bazaar",objID:(0,o.L)("userId")??""},e=await(0,o.v)(t)
 ;if(!e?.status)return
 ;const{bazaar:n}=e,i=n.reduce(((t,e)=>t+ +e?.price*+e.quantity),0),r=n.reduce(((t,e)=>t+ +e?.market_price*+e.quantity),0),a=(0,
 o.O)({classList:"nst-trade-value",
@@ -786,11 +787,11 @@ const e=t?.target
 ;"INPUT"===e?.tagName&&"text"===e?.type&&e.className.includes("input-money")&&(t=>{
 if(!t.closest("li"))return
 ;const e=t?.closest("li")?.querySelector("div.sold-daily").innerText,n=(0,
-o.v)(e).toString();(0,o.k)(t,n)})(e)}))}},980:(t,e,n)=>{
+o.h)(e).toString();(0,o.k)(t,n)})(e)}))}},980:(t,e,n)=>{
 Object.defineProperty(e,"__esModule",{value:!0}),e.T=void 0;const o=n(185)
 ;e.T=()=>{document.addEventListener("dblclick",(t=>{const e=t?.target
 ;if("INPUT"!==e?.tagName)return
-;const n=e.parentElement?.parentElement,i=(0,o.v)(n?.querySelector(".instock").innerText)
+;const n=e.parentElement?.parentElement,i=(0,o.h)(n?.querySelector(".instock").innerText)
 ;e.value=""+Math.min(i,100)}))}},488:(t,e,n)=>{
 Object.defineProperty(e,"__esModule",{value:!0}),e.S=void 0;const o=n(185)
 ;e.S=()=>{console.log("nst - init default start")
@@ -868,8 +869,8 @@ const e=t?.parentNode?.parentNode?.childNodes[0]?.childNodes[1]?.childNodes[1]
 Defense:0,Speed:0,Dexterity:0,Total:0};for(const t of n){
 const e=t.getAttribute("aria-label");if(!e)return;const n=e.split(" ")
 ;if(n.length>2){
-const t=n[0].replace(/:/g,""),e=(0,o.v)(n[1]),r=n[2].replace(/%/g,""),a=r.charAt(0),s=(0,
-o.v)(r),c="+"==a?s/100+1:1-s/100;i[t]=Math.round(e*c),i.Total+=Math.round(e*c)}}
+const t=n[0].replace(/:/g,""),e=(0,o.h)(n[1]),r=n[2].replace(/%/g,""),a=r.charAt(0),s=(0,
+o.h)(r),c="+"==a?s/100+1:1-s/100;i[t]=Math.round(e*c),i.Total+=Math.round(e*c)}}
 e.lastElementChild.removeAttribute("class");const r=(0,o.O)({
 classList:"nst-box-header"});r.appendChild((0,o.C)({classList:"nst-box-title"
 })).appendChild((0,o.C)({id:"nst-box-title",innerText:"Effective Stats"
@@ -887,7 +888,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.R=void 0
 ;o.forEach((t=>{const n=t?.getAttribute("data-user");if(!n)return
 ;const o=e[n]?.last_action?.timestamp,a=t?.querySelector(".employee")
 ;if(!a)return;const s=o<r?"bg-nstred":o<i?"bg-nstyellow":""
-;s&&a.classList.add(s)}))};e.R=async t=>{if(!t)return;const e=await(0,o.h)({
+;s&&a.classList.add(s)}))};e.R=async t=>{if(!t)return;const e=await(0,o.v)({
 section:"company",select:"employees"});if(!e?.status)return
 ;const{company_employees:n}=e;i(t,n),new MutationObserver((t=>{t.forEach((t=>{
 Array.from(t.addedNodes).forEach((t=>i(t,n)))}))})).observe(t,{childList:!0,
@@ -951,8 +952,8 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.tt=void 0,e.tt=t=>{}},
 document.documentElement.classList.add("nst-left-align")}},620:(t,e,n)=>{
 Object.defineProperty(e,"__esModule",{value:!0}),e.nt=void 0;const o=n(185)
 ;e.nt=t=>{if(!t)return
-;const e=t?.parentElement,n=(0,o.I)("userdata"),i=(0,o.v)(n?.networth?.total),r=(0,
-o.v)(n?.personalstats?.networth),a=Math.round(i-r),s=a>0?"text-nstgreen":a<0?"text-nstred":"",c=`<b class='${s}'>$${(0,
+;const e=t?.parentElement,n=(0,o.I)("userdata"),i=(0,o.h)(n?.networth?.total),r=(0,
+o.h)(n?.personalstats?.networth),a=Math.round(i-r),s=a>0?"text-nstgreen":a<0?"text-nstred":"",c=`<b class='${s}'>$${(0,
 o.M)(a)}</b>`,l=(0,o.B)({classList:"last",tabIndex:0,
 ariaLabel:"Live NW: "+(0,o.M)(i)}),u=(0,o.C)({classList:"divider",
 innerHTML:"<span>Live Networth</span>"}),d=(0,o.C)({
@@ -979,10 +980,10 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.st=void 0;const o=n(185)
 ;e.st=()=>{document.addEventListener("dblclick",(t=>{const e=t?.target
 ;if("INPUT"!==e?.tagName)return
 ;const n=e?.parentElement?.parentElement?.parentElement?.parentElement,i=(0,
-o.v)(document?.querySelector(".travel-agency-market .availableItemsAmount")?.getAttribute("value")),r=(0,
-o.v)(document.getElementById("user-money").innerText),a=(0,
-o.v)(n?.querySelector(".cost .c-price").innerText),s=(0,
-o.v)(n?.querySelector(".stock .stck-amount").innerText),c=r/a>=i?i:Math.trunc(r/a),l=Math.min(c,s).toString()
+o.h)(document?.querySelector(".travel-agency-market .availableItemsAmount")?.getAttribute("value")),r=(0,
+o.h)(document.getElementById("user-money").innerText),a=(0,
+o.h)(n?.querySelector(".cost .c-price").innerText),s=(0,
+o.h)(n?.querySelector(".stock .stck-amount").innerText),c=r/a>=i?i:Math.trunc(r/a),l=Math.min(c,s).toString()
 ;(0,o.k)(e,l)}))}},717:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0
 }),e.ct=void 0;const o=n(185),i=n(607);let r;const a=t=>{
 t.querySelector("#nst-lastaction")||t.appendChild((0,o.C)({id:"nst-lastaction",
@@ -1079,7 +1080,7 @@ o.C)({innerHTML:"<br/><br/><b>todo:</b> "+r,classList:"text-nstmain"})
 }))}},243:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0}),e.ft=void 0
 ;const o=n(185),i=t=>{
 const e=t?.querySelector(".total-price"),n=t?.querySelector(".action")
-;(0,o.v)(e?.innerText)*o.minMugPerc>=o.mugThres&&n.classList.add("text-black","bg-nstmain")
+;(0,o.h)(e?.innerText)*o.minMugPerc>=o.mugThres&&n.classList.add("text-black","bg-nstmain")
 };e.ft=t=>{new MutationObserver((t=>{t.forEach((t=>{
 Array.from(t.addedNodes).forEach((t=>{
 const e="LI"===t?.tagName,n=t?.firstElementChild;e&&n&&i(n)}))}))})).observe(t,{
@@ -1137,7 +1138,7 @@ set:t=>{const e=t.toArray(),n=(0,r.I)(r.qfs)
 ;e.forEach((t=>n[t].order=e.indexOf(t))),(0,r.P)({[r.qfs]:n})}}})}},l=t=>{
 t.stopPropagation(),t.preventDefault()
 ;const{target:e}=t,n=e?.closest(".name"),o=n?.closest("li")?.querySelector("img"),i=(0,
-r.v)(o.getAttribute("src")).toString(),a=n?.innerText.replace(/ x\d+$/,"").replace(/[ ]*Blood Bag[ :]*/,"").replace(/[ ]*Bottle of[ :]*/,"").replace(/[ ]*First Aid[ :]*/,"").replace(/[ ]*Lawyer's Business Card[ :]*/,"LBC").replace(/[ ]*Can of[ :]*/,"")
+r.h)(o.getAttribute("src")).toString(),a=n?.innerText.replace(/ x\d+$/,"").replace(/[ ]*Blood Bag[ :]*/,"").replace(/[ ]*Bottle of[ :]*/,"").replace(/[ ]*First Aid[ :]*/,"").replace(/[ ]*Lawyer's Business Card[ :]*/,"LBC").replace(/[ ]*Can of[ :]*/,"")
 ;if(!i)return;const s=(0,r.I)(r.qfs);if(Object.keys(s).includes(i))return
 ;const l=0===Object.values(s)?.length?0:+Object.values(s).reduce(((t,e)=>t?.order>e?.order?t:e))?.order??0
 ;s[i]={id:i,order:l+1,name:a},(0,r.P)({[r.qfs]:s}),c()},u={box:t=>{
@@ -1221,7 +1222,7 @@ const{item:n,selector:i,reg:r}=e,a=(0,o.I)("quick"+n)??!1,s=t?.parentElement,c=s
 ;const u=RegExp(r+"$","g"),d=RegExp(r+"1$","g"),f=a?l.replace(u,r+"1"):l.replace(d,r)
 ;c.setAttribute("href",f)},r=t=>{
 const e=+((0,o.I)("jailscore")??"0"),n=t?.parentElement,r=t.querySelector("span.time").innerText.split(" ").reduce(((t,e)=>t+(/h/.test(e)?60*+e.replace(/h/g,""):/m/.test(e)?+e.replace(/m/g,""):0)),0),a=(0,
-o.v)(t.querySelector("span.level").innerText.match(/\d+/g)?.join())*r
+o.h)(t.querySelector("span.level").innerText.match(/\d+/g)?.join())*r
 ;t.setAttribute("title","score: "+(0,o.M)(a));const s=a>e&&0!==e
 ;n.style.display=s?"none":"",i(t,{item:"bail",selector:"bye",reg:"buy"}),i(t,{
 item:"bust",selector:"bust",reg:"breakout"})},a=t=>{const e=document,n=t.target
@@ -1301,7 +1302,7 @@ void(t.innerText="Invalid Key Length");const o=await(0,a.It)({api:n,selection:""
 const t=document.getElementById("nst-message"),e=document.getElementById("nst-apikey")
 ;if(!t||!e)return;const n=e.value
 ;if(t.innerText="",16!==n?.length)return void(t.innerText="Invalid Key Length")
-;const o={section:"user",select:"profile",api:n},i=await(0,a.h)(o)
+;const o={section:"user",select:"profile",api:n},i=await(0,a.v)(o)
 ;i?.status&&((0,a.P)({apikey:n}),(0,a.Pt)(i)?((0,a.P)({userdata:i
 }),l()):t.innerText="You are not allowed, contact seintz[2460991]")},l=()=>{
 if(!(0,a.Pt)())return;(0,r.S)();const t=document.querySelector("#nst-ul-main")
@@ -1475,7 +1476,7 @@ name:o.filter(((t,e)=>e!==i)).join(" ").trim(),quantity:a}
 ;n+=parseInt(s?.market_value)*a}));const r=(0,o.O)({classList:"nst-trade-value",
 innerText:"MV: $"+(0,o.M)(n)});t.insertAdjacentElement("beforebegin",r)}},
 185:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0
-}),e.zt=e.$t=e.G=e.F=e.Ct=e.Nt=e.Ut=e.Pt=e.Bt=e.Rt=e.Ht=e.It=e.h=e.p=e.k=e.Y=e.Ft=e.Gt=e.Xt=e.Kt=e.Et=e.Lt=e.xt=e.Wt=e.Jt=e.wt=e.vt=e.gt=e.B=e.V=e.C=e.O=e.ot=e.Qt=e._t=e.lt=e.Yt=e.Vt=e.M=e.v=e.Zt=e.P=e.I=e.te=e.W=e.$=e.Tt=e.ee=e.L=e.J=void 0,
+}),e.zt=e.$t=e.G=e.F=e.Ct=e.Nt=e.Ut=e.Pt=e.Bt=e.Rt=e.Ht=e.It=e.v=e.p=e.k=e.Y=e.Ft=e.Gt=e.Xt=e.Kt=e.Et=e.Lt=e.xt=e.Wt=e.Jt=e.wt=e.vt=e.gt=e.B=e.V=e.C=e.O=e.ot=e.Qt=e._t=e.lt=e.Yt=e.Vt=e.M=e.h=e.Zt=e.P=e.I=e.te=e.W=e.$=e.Tt=e.ee=e.L=e.J=void 0,
 e.qfs=e.qft=e.qis=e.qit=e.mugThres=e.minMugPerc=void 0;const o=n(376)
 ;e.J=()=>document.cookie.split("; ").find((t=>t.startsWith("rfc_v"))).split("=")[1],
 e.L=t=>new URLSearchParams(window.location.search).get(t),
@@ -1489,11 +1490,11 @@ return""===t?e??{}:e?.[t]},e.P=t=>{const n=(0,e.I)()
 ;Object.entries(t).forEach((([t,e])=>n[t]=e)),
 localStorage.setItem("nstdata",JSON.stringify(n))},e.Zt=t=>{
 localStorage.removeItem(t)
-},e.v=t=>+(t+"").replace(/[^\d]/g,""),e.M=t=>Math.round(t).toString().replace(/\B(?=(\d{3})+(?!\d))/g,","),
+},e.h=t=>+(t+"").replace(/[^\d]/g,""),e.M=t=>Math.round(t).toString().replace(/\B(?=(\d{3})+(?!\d))/g,","),
 e.Vt=t=>{const e=["K","M","B","T","Q"];let n=Math.abs(t)
 ;if(n<1e3)return""+ +n.toFixed(2)
 ;for(let t=0;t<5;t++)if(n/=1e3,!(n>=1e3))return`${+n.toFixed(2)} ${e[t]}`
-},e.Yt=t=>{const n=t.toLowerCase();let o=(0,e.v)(n),i=1
+},e.Yt=t=>{const n=t.toLowerCase();let o=(0,e.h)(n),i=1
 ;return-1!==n.indexOf("k")?i=1e3:-1!==n.indexOf("m")?i=1e6:-1!==n.indexOf("b")?i=1e9:-1!==n.indexOf("t")&&(i=1e12),
 o*=i,o>0?o.toLocaleString("en-US"):""},e.lt=t=>{let e=""
 ;const n=Math.floor(t/86400),o=Math.floor(t%86400/3600),i=Math.floor(t%3600/60),r=Math.floor(t%3600%60)
@@ -1512,7 +1513,7 @@ e.Jt=t=>(0,e.ot)("input",t),e.Wt=t=>(0,e.ot)("label",t),e.xt=t=>{
 const{elem:n,title:o,cback:i=(()=>{})}=t,r=(0,e._t)(o),a=(0,e.O)({
 classList:"nst-box-item"}),s=(0,e.ot)("input",{id:"nst-"+r,type:"text",
 classList:"nst-input",value:(0,e.M)(+((0,e.I)(r)??"0")),placeholder:r})
-;return s.addEventListener("keyup",(t=>{const n=t.target,o=(0,e.v)(n.value)
+;return s.addEventListener("keyup",(t=>{const n=t.target,o=(0,e.h)(n.value)
 ;n.value=o.toLocaleString("en-US");const r=(0,e._t)(n.placeholder);(0,e.P)({
 [r]:o}),i()})),a.appendChild(s),n.appendChild(a),a},e.Lt=(t,n,o,i)=>{const r=(0,
 e.O)({classList:"nst-box-item"}),a=(0,e.Jt)({...t,type:"checkbox"}),s={
@@ -1543,12 +1544,12 @@ const n=new Event("input",{bubbles:!0})
 ;t.value=""+e,t.dispatchEvent(n),t.select()},e.p=(t,e)=>{
 const n=new Event("input",{bubbles:!0
 }),o=Object.getOwnPropertyDescriptor(t,"value")?.set,i=Object.getPrototypeOf(t),r=Object.getOwnPropertyDescriptor(i,"value")?.set
-;o&&o!==r?r.call(t,e):o.call(t,e),t.dispatchEvent(n),t.select()},e.h=async t=>{
+;o&&o!==r?r.call(t,e):o.call(t,e),t.dispatchEvent(n),t.select()},e.v=async t=>{
 const{section:n,select:o,objID:i,api:a}=t,s="https://api.torn.com/"+n+`/${i??""}?selections=${o}`+`&key=${a??(0,
 e.I)("apikey")}&comment=nst`,c=await r("GET",s)
 ;if(200!==c?.status)return console.error(c),{status:!1};const l=c?.response
-;return void 0!==l?.error?(console.error(l?.error?.error),{status:!1}):l
-},e.It=async t=>{
+;return void 0!==l?.error?(console.error(l?.error?.error),{status:!1}):{
+status:!0,...l}},e.It=async t=>{
 const{selection:n,api:o}=t,i=`https://www.tornstats.com/api/v2/${o??(0,
 e.I)("tsapikey")??(0,e.I)("apikey")}${n}`,a=await r("GET",i)
 ;if(200!==a?.status)return console.error(a),{status:!1};const s=a?.response
@@ -1564,11 +1565,11 @@ o.t)().u.includes((0,e.Rt)(a))&&!(0,o.t)().l.includes((0,e.Rt)(r)))
 ;const n=(0,e.I)("userdata"),o=1e3*n?.timestamp??0;if(Date.now()-6e4<=o)return
 ;const i={section:"user",
 select:"bars,basic,cooldowns,education,icons,money,networth,notifications,perks,profile,refills,timestamp,travel,newmessages,newevents,personalstats",
-api:t},r=await(0,e.h)(i);if(!r?.status)return
+api:t},r=await(0,e.v)(i);if(!r?.status)return
 ;const a=r.merit_perks.filter((t=>t.includes("mug"))).join(),s=((0,
-e.v)(a)/5+20)/400;if((0,e.P)({userdata:r}),(0,e.P)({mugperc:s
+e.h)(a)/5+20)/400;if((0,e.P)({userdata:r}),(0,e.P)({mugperc:s
 }),Date.now()-36e5<=o)return;const c={section:"torn",select:"items",api:t
-},l=await(0,e.h)(c);if(!l?.status)return;const{items:u}=l;(0,e.P)({items:u})
+},l=await(0,e.v)(c);if(!l?.status)return;const{items:u}=l;(0,e.P)({items:u})
 },e.Nt=(t="")=>{if(!(0,e.Pt)())return!1;const n=(0,e.I)("script")
 ;if(""===t)return!0;const o=n?.[t]?.enabled;return!!o},e.Ct=()=>{
 const t=document?.body?.getAttribute("data-traveling"),e=document?.body?.getAttribute("data-abroad")
@@ -1585,7 +1586,7 @@ const i=await n(...o),r=new URL("https://www.torn.com"+o[0])?.searchParams,a=r?.
 ;if(a!==e)return i;let s;try{s=await(i?.clone()?.json())}catch(t){
 return console.error(o,t),i}return t(s),i}
 },e.minMugPerc=+(0,e.I)("mugperc"),e.mugThres=(0,
-e.v)((0,e.I)("mugthreshold")),e.qit="Quick Items",
+e.h)((0,e.I)("mugthreshold")),e.qit="Quick Items",
 e.qis=(0,e._t)(e.qit),e.qft="Quick Faction",e.qfs=(0,e._t)(e.qft)
 ;const r=(t,e,n={},o={})=>new Promise(((i,r)=>{
 if(void 0!==window.flutter_inappwebview)"GET"===t&&PDA_httpGet(e).then((t=>i(JSON.parse(t.responseText)))).catch(r),
