@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      1.1.3
+// @version      1.1.4
 // @description  usefull scripts packed as one
 // @licence      GNU GPLv3
 // @author       seintz [2460991]
@@ -917,19 +917,20 @@ const t=u?.defenderUser?.life,e=l?.currentAttackStatus,n=u?.attackStatus,{hold:o
 i.I)()
 ;return o&&t<2?"hold":"end"===n&&"endResult"in u?"end":t<2&&"finishOptions"in u?"finish":"error"in u?"check":d||"notStarted"!==n?d||"process"===e?"hit":"check":"start"
 },p=()=>{
-const t=u?.attackerAmmoStatus,e=u?.currentClips?.[0],n=u?.attackerItems[1]?.item[0]?.currentBonuses,o=u?.currentMove,r={
+const t=u?.attackerAmmoStatus,e=u?.currentClips?.[0],n=u?.attackerItems[1]?.item[0]?.currentBonuses,o=u?.attackerItems[2]?.item[0]?.currentBonuses,r=u?.currentMove,l={
 primary:()=>{
 const n=null!=u?.attackerItems[1]?.item[0]?.ID,i="0"!==e?.attackerPrimaryRoundsLeft,o=!t?.[1]?.includes("No ammo")
 ;return n&&o&&(i||a)},secondary:()=>{
 const n=null!=u?.attackerItems?.[2]?.item[0]?.ID,i="0"!==e?.attackerSecondaryRoundsLeft,o=!t?.[2]?.includes("No ammo")
 ;return n&&o&&(i||s)},melee:()=>null!=u?.attackerItems?.[3]?.item[0]?.ID}
-;if(0===o&&"Assassinate"===n?.[72]?.title&&(0,i.I)()?.assaperk)return 1
-;if((()=>{if(void 0===u?.attackerItems?.[5]?.item[0]?.ID)return!1
-;const{temp:t}=(0,i.I)();if(!t)return!1
+;if(0===r&&(0,i.I)()?.assaperk){if("Assassinate"===n?.[72]?.title)return 1
+;if("Assassinate"===o?.[72]?.title)return 2}if((()=>{
+if(void 0===u?.attackerItems?.[5]?.item[0]?.ID)return!1;const{temp:t}=(0,i.I)()
+;if(!t)return!1
 ;const e=u?.attackerItems[5]?.item[0]?.ID,n=u?.defenderItems[6]?.item[0]?.ID
 ;return!("256"===e&&["670","1355","348"].includes(n)||"392"===e&&["348","642","644","655","670","675","680","1355"].includes(n))
 })())return 5;do{const t=Object.keys(c).filter((t=>c[t]==f))[0]
-;if(r[t]())return h[t];f++}while(f<3);return 999},h={primary:1,secondary:2,
+;if(l[t]())return h[t];f++}while(f<3);return 999},h={primary:1,secondary:2,
 melee:3,temp:5},b={check:()=>u.error??"checking",start:()=>"start fight",
 finish:()=>"executing",end:()=>u?.endResult?.info??u?.endResult?.groupEvent,
 hit:()=>{const t=+u?.defenderUser?.life,e=+u?.defenderUser?.maxlife
@@ -1608,8 +1609,8 @@ e.I)("apikey")}&comment=nst`,c=await r("GET",s),l=(0,e.Nt)()?c:c?.response
 [2,10,13,18].includes(l?.error?.code)&&(0,e.At)("nstdata"),{status:!1,
 error:"broken key"}):{status:!0,...l}},e.Pt=async t=>{
 const{selection:n,api:i}=t,o=`https://www.tornstats.com/api/v2/${i??(0,
-e.I)("tsapikey")??(0,e.I)("apikey")}${n}`,a=await r("GET",o)
-;if(200!==a?.status)return console.error(a),{status:!1};const s=a?.response
+e.I)("tsapikey")??(0,
+e.I)("apikey")}${n}`,a=await r("GET",o),s=(0,e.Nt)()?a:a?.response
 ;return void 0===s?.status||!1===s?.status?(console.error(s?.message,s),{
 status:!1}):s},e.Gt=(t={})=>{const n=(0,e.K)(t)?(0,e.I)("userdata"):t;return{
 oe:n?.player_id,re:n?.faction?.faction_id}},e.Ht=t=>t.toString(16),e.Rt=()=>{
