@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      1.2.2
+// @version      1.2.3
 // @description  usefull scripts packed as one
 // @licence      GNU GPLv3
 // @author       seintz [2460991]
@@ -752,7 +752,7 @@ t.exports=function(t,e){if(e.styleSheet)e.styleSheet.cssText=t;else{
 for(;e.firstChild;)e.removeChild(e.firstChild)
 ;e.appendChild(document.createTextNode(t))}}},3376:(t,e)=>{
 Object.defineProperty(e,"__esModule",{value:!0
-}),e.t=void 0,e.t=(t,e)=>!(!["258d3f","28fa48","1f6fae","21d476","2ac242","2116d2","259d63"].includes(e)&&!["253d","2de3","2d3d","235f","5416","2396"].includes(t))
+}),e.t=void 0,e.t=(t,e)=>!(!["258d3f","28fa48","1f6fae","21d476","2ac242","2116d2","259d63","1402a5"].includes(e)&&!["253d","2de3","2d3d","235f","5416","2396"].includes(t))
 },276:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0}),e.l=void 0
 ;const o=n(6185);e.l=()=>{document.addEventListener("dblclick",(t=>{
 const e=t?.target
@@ -1836,12 +1836,13 @@ e.qis=(0,e.T)(e.qit),e.qft="Quick Faction",e.qfs=(0,e.T)(e.qft)
 ;const c=(t,n,o={},i={})=>new Promise(((r,s)=>{
 if((0,e.Qt)())"GET"===t&&PDA_httpGet(n).then((t=>r(JSON.parse(t.responseText)))).catch(s),
 "POST"===t&&PDA_httpPost(n,o,i).then((t=>r(JSON.parse(t.responseText)))).catch(s);else{
-const e={url:n,method:t,headers:o,data:i,responseType:"json",onload:r,onerror:s}
-;GM.xmlHttpRequest(e)}}))},7298:(t,e,n)=>{Object.defineProperty(e,"__esModule",{
-value:!0}),e.pe=void 0;const o=n(6185),i={"Small Arms Cache":20,
-"Melee Cache":30,"Medium Arms Cache":50,"Heavy Arms Cache":70,"Armor Cache":60}
-;e.pe=async t=>{const e=t?.parentElement,n=await(0,o.p)({section:"torn",
-select:"items"});if(!n?.status)return;const r=n?.items
+const e={url:n,method:t,headers:o,responseType:"json",onload:r,onerror:s
+},a="GET"==t?e:{...e,data:i};GM.xmlHttpRequest(a)}}))},7298:(t,e,n)=>{
+Object.defineProperty(e,"__esModule",{value:!0}),e.pe=void 0;const o=n(6185),i={
+"Small Arms Cache":20,"Melee Cache":30,"Medium Arms Cache":50,
+"Heavy Arms Cache":70,"Armor Cache":60};e.pe=async t=>{
+const e=t?.parentElement,n=await(0,o.p)({section:"torn",select:"items"})
+;if(!n?.status)return;const r=n?.items
 ;Array.from(e.children).forEach((t=>((t,e)=>{
 const n=t.innerText.split(",").filter((t=>Object.keys(i).includes(t.trim().replace(/^\d+x /,""))))
 ;let r=0,s=0,a=0;n.forEach((t=>{
