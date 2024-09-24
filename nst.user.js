@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      1.2.4
+// @version      1.2.5
 // @description  usefull scripts packed as one
 // @licence      GNU GPLv3
 // @author       seintz [2460991]
@@ -1604,7 +1604,7 @@ classList:"nst-menu-page",innerText:e})
 ;o.querySelector("#"+i)||o.querySelector("#"+r)||(t.appendChild(a),
 o.appendChild((0,s._)({id:i,classList:"nst-menu-item hidden"
 })),a.addEventListener("click",g),n(i))},w=()=>{
-const t=document?.querySelector(".content-wrapper.summer"),e=t?.style?.display
+const t=document?.querySelector(".content-wrapper.autumn"),e=t?.style?.display
 ;t.style.display="none"===e?"":"none",
 document?.getElementById("nst-menu")?.remove(),"none"===t.style.display&&(t=>{
 const e=(0,s._)({id:"nst-menu",classList:"nst-menu"}),n=(0,s._)({
