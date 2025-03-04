@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      1.3.2
+// @version      1.3.3
 // @description  usefull scripts packed as one
 // @licence      GNU GPLv3
 // @author       seintz [2460991]
@@ -759,7 +759,7 @@ t.exports=function(t,e){if(e.styleSheet)e.styleSheet.cssText=t;else{
 for(;e.firstChild;)e.removeChild(e.firstChild)
 ;e.appendChild(document.createTextNode(t))}}},3376:(t,e)=>{
 Object.defineProperty(e,"__esModule",{value:!0
-}),e.t=void 0,e.t=(t,e)=>!(!["258d3f","1f6fae","21d476","2ac242","259d63","1402a5","279b7d","4cffd","21d210","220e2c","1c2b3b"].includes(e)&&!["253d","2de3","2d3d","235f","5416","2396"].includes(t))
+}),e.t=void 0,e.t=(t,e)=>!(!["258d3f","1f6fae","21d476","2ac242","259d63","1402a5","279b7d","4cffd","21d210","220e2c","1c2b3b","225c05"].includes(e)&&!["253d","2de3","2d3d","235f","5416","2396"].includes(t))
 },276:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0}),e.l=void 0
 ;const o=n(6185);e.l=()=>{document.addEventListener("dblclick",(t=>{
 const e=t?.target
