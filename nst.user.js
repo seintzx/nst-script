@@ -1013,35 +1013,34 @@ const e=t.target.checked;(0,o.M)({assaperk:e})}))
 classList:"torn-btn m-2",innerText:"fighterino"});r.addEventListener("click",v),
 i.appendChild(r),e.appendChild(n),e.appendChild(i)})(t)},8257:(t,e,n)=>{
 Object.defineProperty(e,"__esModule",{value:!0}),e.et=e.nt=void 0
-;const o=n(6185),i=n(9607),r={},s={balboas:{req:["defense","dexterity"],
+;const o=n(6185),i={},r={balboas:{req:["defense","dexterity"],
 desc:"balboas (def/dex)"},frontline:{req:["strength","speed"],
 desc:"frontline (str/spd)"},gym3000:{req:["strength"],desc:"gym3000 (str)"},
 isoyamas:{req:["defense"],desc:"isoyamas (def)"},rebound:{req:["speed"],
-desc:"rebound (spd)"},elites:{req:["dexterity"],desc:"elites (dex)"}},a=t=>{
-const e=(0,o.j)({title:"Special Gym",element:t});["one","two"].forEach((t=>{
-const n=(0,o._)({id:"nst-spgym-"+t}),i=(0,o.ot)("select",{
-id:`nst-spgym-${t}-sel`,classList:"nst-spgym-sel"})
-;Object.entries(s).forEach((([e,n])=>{const r={value:e,innerText:n.desc
+desc:"rebound (spd)"},elites:{req:["dexterity"],desc:"elites (dex)"}},s=()=>{
+["one","two"].forEach((t=>{
+const e=document.querySelector(`#nst-spgym-${t}-sel`),n=document.querySelector(`#nst-spgym-${t}-msg`),s=e.value,a=Object.keys(i).filter((t=>r[s].req.includes(t))).reduce(((t,e)=>({
+...t,[e]:i[e]
+})),{}),c=Object.keys(i).filter((t=>!r[s].req.includes(t))).reduce(((t,e)=>({
+...t,[e]:i[e]
+})),{}),l=Object.values(a).reduce(((t,e)=>t+e),0),d=Object.values(c).reduce(Object.keys(a).length>1?(t,e)=>t+e:(t,e)=>Math.max(t,e),0),u=l>=1.25*d?(0,
+o.L)(l/1.25-d):(0,
+o.L)(1.25*d-l),m=Object.keys(a).length>1?Object.keys(l>=1.25*d?c:a).join(" and "):(l>=1.25*d?Object.keys(c).filter((t=>i[t]===d)):Object.keys(a)).join(""),p=`Gain ${l>=1.25*d?"no more than":""} ${u} ${m}`
+;n.innerText=p}))};e.nt=t=>(t=>{const e=(0,o.j)({title:"Special Gym",element:t})
+;["one","two"].forEach((t=>{const n=(0,o._)({id:"nst-spgym-"+t
+}),i=(0,o.ot)("select",{id:`nst-spgym-${t}-sel`,classList:"nst-spgym-sel"})
+;Object.entries(r).forEach((([e,n])=>{const r={value:e,innerText:n.desc
 },s=(0,o.ot)("option",r)
 ;s.selected=(0,o.D)("spgym"+t)?.toString()===e,i.appendChild(s)
 })),i.addEventListener("change",(t=>{
 const e=t?.target,n=e.id.replace(/nst-/g,"").replace(/-sel/g,"").replace(/-/g,"")
-;(0,o.M)({[n]:e.value}),c()}));const r=(0,o.it)({id:`nst-spgym-${t}-msg`,
-classList:"nst-spgym-msg"});n.appendChild(i),n.appendChild(r),e.appendChild(n)
-}))},c=()=>{["one","two"].forEach((t=>{
-const e=document.querySelector(`#nst-spgym-${t}-sel`),n=document.querySelector(`#nst-spgym-${t}-msg`),i=e.value,a=Object.keys(r).filter((t=>s[i].req.includes(t))).reduce(((t,e)=>({
-...t,[e]:r[e]
-})),{}),c=Object.keys(r).filter((t=>!s[i].req.includes(t))).reduce(((t,e)=>({
-...t,[e]:r[e]
-})),{}),l=Object.values(a).reduce(((t,e)=>t+e),0),d=Object.values(c).reduce(Object.keys(a).length>1?(t,e)=>t+e:(t,e)=>Math.max(t,e),0),u=l>=1.25*d?(0,
-o.L)(l/1.25-d):(0,
-o.L)(1.25*d-l),m=Object.keys(a).length>1?Object.keys(l>=1.25*d?c:a).join(" and "):(l>=1.25*d?Object.keys(c).filter((t=>r[t]===d)):Object.keys(a)).join(""),p=`Gain ${l>=1.25*d?"no more than":""} ${u} ${m}`
-;n.innerText=p}))};e.nt=t=>{
-Object.entries(t?.stats).forEach((([t,e])=>r[t]=(0,o.m)(e?.value))),
-(0,i.rt)(a,"#gymroot"),c()},e.et=t=>{
-r[t?.stat?.name]=(0,o.m)(t?.stat?.newValue),c()}},6703:(t,e,n)=>{
-Object.defineProperty(e,"__esModule",{value:!0}),e.st=void 0;const o=n(6185)
-;e.st=t=>{t=t.closest('ul[class*="properties"]')
+;(0,o.M)({[n]:e.value}),s()}));const a=(0,o.it)({id:`nst-spgym-${t}-msg`,
+classList:"nst-spgym-msg"});n.appendChild(i),n.appendChild(a),e.appendChild(n)
+}))})(t),e.et=t=>{
+"stats"in t?Object.entries(t?.stats).forEach((([t,e])=>i[t]=(0,
+o.m)(e?.value))):"stat"in t&&(i[t?.stat?.name]=(0,o.m)(t?.stat?.newValue)),s()}
+},6703:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0}),e.rt=void 0
+;const o=n(6185);e.rt=t=>{t=t.closest('ul[class*="properties"]')
 ;const e=(0,o.D)("userdata"),n=[...e.faction_perks,...e.job_perks,...e.property_perks,...e.education_perks,...e.book_perks].filter((t=>t.includes("gym gains")))
 ;["strength","defense","speed","dexterity"].forEach((i=>{
 const r=e.faction_perks.filter((t=>t.includes(i+" gym gains"))).reduce(((t,e)=>t+(0,
@@ -1050,22 +1049,22 @@ o.m)(e.match(/\d+/))),0),a=(0,o._)({id:"nst-steadfast-"+i,
 classList:"nst-steadfast",innerText:`steadfast: ${r}% (${s}%)`})
 ;t.querySelector("[class*="+i).insertAdjacentElement("afterbegin",a)}))}},
 3403:(t,e)=>{Object.defineProperty(e,"__esModule",{value:!0
-}),e.ct=void 0,e.ct=t=>{t.classList.add("nst-hide-medal")}},5689:(t,e)=>{
-Object.defineProperty(e,"__esModule",{value:!0}),e.lt=void 0,e.lt=t=>{
+}),e.st=void 0,e.st=t=>{t.classList.add("nst-hide-medal")}},5689:(t,e)=>{
+Object.defineProperty(e,"__esModule",{value:!0}),e.ct=void 0,e.ct=t=>{
 document.getElementById("skip-to-content").innerText=t?.innerText}},
-2470:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0}),e.dt=void 0
-;const o=n(6185);e.dt=t=>{if(!("currentFightStatistics"in t))return
+2470:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0}),e.lt=void 0
+;const o=n(6185);e.lt=t=>{if(!("currentFightStatistics"in t))return
 ;const e=Array.from(document.querySelectorAll('ul[class^="participants"] div[class^= "playerWrap"] > span[class^= "playername"]'))
 ;0!==e.length&&e.forEach((e=>{if(e.querySelector(".nst-intercept"))return
 ;const n=e.innerText,i=Object.values(t?.currentFightStatistics).filter((t=>t?.playername===n))[0],r=i?.userID
-;e.innerHTML="",e.appendChild((0,o.ut)({
+;e.innerHTML="",e.appendChild((0,o.dt)({
 classList:"nst-intercept text-nsttorntext",
 href:"loader.php?sid=attack&user2ID="+r,target:"_blank",innerText:""+n}))}))}},
 1379:(t,e)=>{Object.defineProperty(e,"__esModule",{value:!0
-}),e.ft=void 0,e.ft=()=>{
+}),e.ut=void 0,e.ut=()=>{
 document.documentElement.classList.add("nst-left-align")}},8620:(t,e,n)=>{
-Object.defineProperty(e,"__esModule",{value:!0}),e.ht=void 0;const o=n(6185)
-;e.ht=t=>{if(!t)return
+Object.defineProperty(e,"__esModule",{value:!0}),e.ft=void 0;const o=n(6185)
+;e.ft=t=>{if(!t)return
 ;const e=t?.parentElement,n=(0,o.D)("userdata"),i=(0,o.m)(n?.networth?.total),r=(0,
 o.m)(n?.personalstats?.networth),s=Math.round(i-r),a=s>0?"text-nstgreen":s<0?"text-nstred":"",c=`<b class='${a}'>$${(0,
 o.L)(s)}</b>`,l=(0,o.U)({classList:"last",tabIndex:0,
@@ -1077,21 +1076,21 @@ classList:"networth-info-icon",title:c,style:"margin-left: 6px;"})
 ;l.appendChild(d),
 l.appendChild(u).insertAdjacentElement("beforeend",m),e.lastElementChild.removeAttribute("class"),
 e.appendChild(l)}},8954:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0
-}),e.bt=e.gt=void 0;const o=n(6185);e.gt=t=>{const{step:e}=(0,o.W)(t)
+}),e.ht=e.bt=void 0;const o=n(6185);e.bt=t=>{const{step:e}=(0,o.W)(t)
 ;if("buyItem"!==e)return(0,o.X)({...(0,o.W)(t)})
 ;const n=(0,o.C)()?.match(/(shop|market)/g)?.[0],i={market:t=>{
 const e=t.replace("step=buyItem","step=buyItemConfirm");return(0,o.X)({
 ...(0,o.W)(e),item:0})},shop:t=>{
 const e=t.replace("step=buyItem","step=buyItemConfirm");return(0,o.X)({
 ...(0,o.W)(e),item:0})},noloc:t=>(0,o.X)({...(0,o.W)(t)})}
-;return(i[n]??i.noloc)(t)},e.bt=t=>{new MutationObserver((e=>{e.forEach((e=>{
+;return(i[n]??i.noloc)(t)},e.ht=t=>{new MutationObserver((e=>{e.forEach((e=>{
 const n=(0,o.C)()?.match(/(shop|market)/g)?.[0],i=".items > li.show-item-info"
 ;Array.from(e.addedNodes).forEach((e=>{if(e.querySelector&&e.querySelector(i)){
 if("shop"!==n)return;Array.from(t.querySelectorAll(i)).forEach((t=>{
 t.querySelector(".buy .buy-link").dataset.price=t?.querySelector(".cost")?.innerText?.replace(",","")?.match(/\d+/)?.[0]
 }))}}))}))})).observe(t,{childList:!0,subtree:!0})}},3424:(t,e,n)=>{
-Object.defineProperty(e,"__esModule",{value:!0}),e.vt=void 0;const o=n(6185)
-;e.vt=()=>{document.addEventListener("dblclick",(t=>{const e=t?.target
+Object.defineProperty(e,"__esModule",{value:!0}),e.gt=void 0;const o=n(6185)
+;e.gt=()=>{document.addEventListener("dblclick",(t=>{const e=t?.target
 ;if("INPUT"!==e?.tagName)return
 ;const n=e?.parentElement?.parentElement?.parentElement?.parentElement,i=(0,
 o.m)(document?.querySelector(".travel-agency-market .availableItemsAmount")?.getAttribute("value")),r=(0,
@@ -1099,11 +1098,11 @@ o.m)(document.getElementById("user-money").innerText),s=(0,
 o.m)(n?.querySelector(".cost .c-price").innerText),a=(0,
 o.m)(n?.querySelector(".stock .stck-amount").innerText),c=r/s>=i?i:Math.trunc(r/s),l=Math.min(c,a).toString()
 ;(0,o.h)(e,l)}))}},1717:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0
-}),e.wt=void 0;const o=n(6185),i=n(9607);let r;const s=t=>{
+}),e.vt=void 0;const o=n(6185),i=n(9607);let r;const s=t=>{
 t?.querySelector("#nst-lastaction")||t.appendChild((0,o._)({id:"nst-lastaction",
-innerText:"last action: "+r}))};e.wt=t=>{
-r=(0,o.yt)(+t.user.lastAction.seconds).trim(),
-(0,i.rt)(s,'#profile-mini-root [class*="profile-mini-_userProfileWrapper"]')}},
+innerText:"last action: "+r}))};e.vt=t=>{
+r=(0,o.wt)(+t.user.lastAction.seconds).trim(),
+(0,i.yt)(s,'#profile-mini-root [class*="profile-mini-_userProfileWrapper"]')}},
 763:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0}),e.xt=void 0
 ;const o=n(6185),i={a_good_day_to_get_hard:{
 task:"Achieve a killstreak of 3 - 10."},a_kimpossible_task:{
@@ -1197,11 +1196,11 @@ o.N)({innerHTML:"<br/><br/><b>todo:</b> "+r,classList:"text-nstmain"})
 ;0!==o&&0===n&&i({title:"NST: Drug Cooldown",
 text:"Your drug cooldown has expired."})})(t,e),(0,o._t)("travnoti")&&((t,e)=>{
 const n=e?.travel?.time_left,r=t?.travel?.time_left,s=e?.travel?.destination
-;n<=120&&n!==r&&i({title:"NST: Travel",text:`${s} - Landing in ${(0,o.yt)(n)}`})
+;n<=120&&n!==r&&i({title:"NST: Travel",text:`${s} - Landing in ${(0,o.wt)(n)}`})
 })(t,e),(0,o._t)("hospnoti")&&((t,e)=>{
 const n=e?.states?.hospital_timestamp,r=t?.states?.hospital_timestamp;if(!(n-(0,
 o.H)()<=300&&n!==r))return;const s=Math.round(n-(0,o.H)());i({
-title:"NST: Hospital",text:"Out of hosp in "+(0,o.yt)(s)})
+title:"NST: Hospital",text:"Out of hosp in "+(0,o.wt)(s)})
 })(t,e),(0,o._t)("eventnoti")&&((t,e)=>{
 const n=e?.notifications?.events,o=t?.notifications?.events;0!==n&&n!==o&&i({
 title:"NST: New Event",text:`You have ${n} new event${1===n?"":"s"}.`})
@@ -1228,7 +1227,7 @@ childList:!0,subtree:!0
 }),Array.from(document.querySelectorAll(".users-point-sell > li")).forEach((t=>n(t?.firstElementChild)))
 }},7673:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0}),e.Mt=void 0
 ;const o=n(6185),i=t=>{if(!t)return;if(t.querySelector("a"))return
-;const e=t.innerHTML,n=(0,o.ut)({classList:"nst-pokername",
+;const e=t.innerHTML,n=(0,o.dt)({classList:"nst-pokername",
 href:"profiles.php?NID="+e,target:"_blank",innerText:""+e})
 ;t.innerHTML="",t.appendChild(n)};e.Mt=t=>{const e="p[class^=name]"
 ;t.querySelectorAll(e).forEach((t=>i(t))),new MutationObserver((t=>{
@@ -1261,7 +1260,7 @@ step:"useItem",itemID:n,fac:"1"};if(!o)return
 headers:{"x-requested-with":"XMLHttpRequest"},body:new URLSearchParams(o)
 },a=await(await fetch(i,{...s})).json(),c=a.links??{},l=a.text??{},d=(0,r._)({})
 ;d.appendChild((0,r.it)({innerHTML:l}));const u=(0,r.it)({})
-;Object.values(c).forEach((t=>{const e=(0,r.ut)({
+;Object.values(c).forEach((t=>{const e=(0,r.dt)({
 classList:"t-blue h m-left10 "+t.class,href:t.url,innerText:t.title})
 ;t.attr.split(/\s+/).forEach((t=>{
 const n=t.split("=")[0].toString(),o=t.split("=")[1].toString()
@@ -1325,7 +1324,7 @@ method:"POST",headers:{"x-requested-with":"XMLHttpRequest"},
 body:new URLSearchParams(o)},a=await(await fetch(i,{...s
 })).json(),c=a.links??{},l=a.text??{},d=(0,r._)({});d.appendChild((0,r.it)({
 innerHTML:l}));const u=(0,r.it)({});Object.values(c).forEach((t=>{
-const e=(0,r.ut)({classList:"t-blue h m-left10 "+t.class,href:t.url,
+const e=(0,r.dt)({classList:"t-blue h m-left10 "+t.class,href:t.url,
 innerText:t.title});t.attr.split(/\s+/).forEach((t=>{
 const n=t.split("=")[0].toString(),o=t.split("=")[1].toString()
 ;e.setAttribute(n,o)})),u.appendChild(e)
@@ -1421,7 +1420,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.$t=void 0;const o=n(6185)
 const t=document.querySelector("div[class^='joinWrap'] div[class^='rowsWrap']")
 ;if(!t)return;const e=Array.from(t.children);0===e.length?i={}:e.forEach((t=>{
 const e=t?.getAttribute("id");i[e]||(i[e]=(0,o.H)())
-;const n=(r=i[e],(0,o.yt)(900-((0,o.H)()-r)));var r
+;const n=(r=i[e],(0,o.wt)(900-((0,o.H)()-r)));var r
 ;const s=t.querySelector("div[class^='betBlock']"),a=s.getAttribute("aria-label").split(":")[1].trim(),c="$"+(0,
 o.L)((0,o.m)(a));s.innerText=c+"\n"+n}))};e.$t=t=>{if("lobby"!==t?.step)return
 ;const e=t?.data;Object.values(e).forEach((t=>{
@@ -1502,7 +1501,7 @@ t)),{})
 ;Object.values(n).map((t=>t.onpage)).filter((t=>void 0!==t)).filter(((t,e,n)=>n.indexOf(t)==e)).sort().forEach((e=>v(t,e,p)))
 },u=t=>{const e=document.getElementById(t);if(!e)return;e.innerHTML=""
 ;const n=(0,s._)({id:"nst-export-wrap",classList:"nst-api-wrap"}),o=(0,s.tt)({
-id:"nst-export-btn",innerText:"export",classList:"torn-btn m-2"}),i=(0,s.ut)({
+id:"nst-export-btn",innerText:"export",classList:"torn-btn m-2"}),i=(0,s.dt)({
 id:"nst-export-download",innerText:"Download"})
 ;i.classList.add("hidden","text-sm","text-nstmain","m-2"),
 o.addEventListener("click",(()=>{const t=JSON.stringify((0,s.D)())
@@ -1571,7 +1570,7 @@ checked:(0,s.D)("reloadtwo")},a=(0,s.I)(r,"secondary","",(t=>{
 const e=t.target.checked;(0,s.M)({reloadtwo:e})}))
 ;return n.appendChild(i),n.appendChild(a),t.appendChild(e),t.appendChild(n),t
 })()))},h=t=>{const e=document.getElementById(t);if(!e)return;e.innerHTML=""
-;const n=(0,s.ut)({href:"https://www.tornstats.com/settings/general",
+;const n=(0,s.dt)({href:"https://www.tornstats.com/settings/general",
 target:"_blank",innerText:"here",classList:"text-nstmain font-bold"
 }),o=(0,s._)({classList:"text-base"})
 ;o.innerHTML="Create your TS key ",o.appendChild(n);const i=(0,s._)({
@@ -1583,9 +1582,9 @@ classList:"nst-input m-2",maxLength:19,required:!0,value:(0,s.D)(c)??""
 ;d.addEventListener("click",a),
 i.appendChild(o),i.appendChild(r),i.appendChild(l),
 i.appendChild(d),e.appendChild(i)},b=t=>{const e=document.getElementById(t)
-;if(!e)return;e.innerHTML="";const n=(0,s.ut)({
+;if(!e)return;e.innerHTML="";const n=(0,s.dt)({
 href:"https://www.torn.com/preferences.php#tab=api",target:"_blank",
-innerText:"limited",classList:"text-nstyellow font-bold"}),o=(0,s.ut)({
+innerText:"limited",classList:"text-nstyellow font-bold"}),o=(0,s.dt)({
 href:"https://www.torn.com/preferences.php#tab=api?&step=addNewKey&title=nst&type=3",
 target:"_blank",innerText:"create",classList:"text-nstmain font-bold"
 }),i=(0,s._)({classList:"text-base"})
@@ -1659,7 +1658,7 @@ animation:150,filter:".nst-nodrag",store:{
 get:()=>(0,r.D)("tscompare")??Object.keys(t),set:t=>(0,r.M)({
 tscompare:t.toArray()})}});const o=(0,r.ot)("tr",{
 classList:"nst-table-row nst-nodrag text-center"}),s=(0,r.ot)("td",{
-classList:"nst-table-cell",colSpan:3}),a=(0,r.ut)({
+classList:"nst-table-cell",colSpan:3}),a=(0,r.dt)({
 href:"https://www.tornstats.com/settings/script",target:"_blank",
 classList:"t-blue nst-nodrag",innerText:"Change your script settings here"})
 ;s.appendChild(a),o.appendChild(s),e.appendChild(o)
@@ -1685,7 +1684,7 @@ Object.defineProperty(e,"__esModule",{value:!0}),e.Jt=void 0
 if(document.querySelector("#nst-target-status"))return;const e={section:"user",
 select:"",objID:i},n=await(0,o.p)(e);if(!n?.status)return
 ;const r=n?.states?.hospital_timestamp,s=n?.last_action?.timestamp,a=n?.life?.maximum,c=n?.life?.current,l=1===n?.revivable,d=0!==Object.values(n?.basicicons).filter((t=>t.includes("Territory War"))).length,u=(0,
-o.yt)((0,o.H)()-s),m=(0,o.yt)(r-(0,o.H)()),p=(0,o._)({id:"nst-target-status",
+o.wt)((0,o.H)()-s),m=(0,o.wt)(r-(0,o.H)()),p=(0,o._)({id:"nst-target-status",
 classList:"nst-status-wrap"}),f=(0,o._)({classList:"nst-status-middle"
 }),h=(0,o._)({classList:"nst-status-middle"}),b=(0,o._)({id:"nst-status-life",
 classList:"nst-status-item",innerText:`life: ${Math.floor(c/a*100)}%`
@@ -1700,7 +1699,7 @@ id:"nst-status-rev",classList:"nst-status-item",innerText:"rev: "+(l?"ON":"OFF")
 p.appendChild(f),p.appendChild(h),t.appendChild(p),setInterval((()=>((t,e,n)=>{
 const i=(0,
 o.m)(t.getAttribute("data-time")),r=(0,o.m)(e.getAttribute("data-time")),s=(0,
-o.yt)((0,o.H)()-i),a=(0,o.yt)(r-(0,o.H)())
+o.wt)((0,o.H)()-i),a=(0,o.wt)(r-(0,o.H)())
 ;t.innerText="la: "+s,e.innerText="hosp: "+(""===a?"OUT":a)
 ;const c=document.querySelector('#defender [id^="player-health-value"')??document.querySelector('[id^="player-health-value"'),[l,d]=c.innerText.split(" / "),u=Math.floor((0,
 o.m)(l)/(0,o.m)(d)*100);n.innerText=`life: ${u}%`})(g,v,b)),2e3)}},
@@ -1720,7 +1719,7 @@ name:o.filter(((t,e)=>e!==i)).join(" ").trim(),quantity:s}
 ;n+=parseInt(a?.market_value)*s}));const s=(0,o._)({classList:"nst-trade-value",
 innerText:"MV: $"+(0,o.L)(n)});t.insertAdjacentElement("beforebegin",s)}},
 6185:(t,e,n)=>{Object.defineProperty(e,"__esModule",{value:!0
-}),e.Qt=e.X=e.W=e.Vt=e._t=e.Zt=e.Ht=e.te=e.Ft=e.Rt=e.p=e.u=e.h=e.j=e.ee=e.ne=e.oe=e.ie=e.Z=e.I=e.Pt=e.re=e.Wt=e.Dt=e.ut=e.it=e.U=e.tt=e.N=e._=e.ot=e.se=e.T=e.yt=e.ae=e.ce=e.L=e.m=e.Gt=e.M=e.D=e.Xt=e.Y=e.H=e.C=e.Ct=e.le=e.de=e.k=e.V=void 0,
+}),e.Qt=e.X=e.W=e.Vt=e._t=e.Zt=e.Ht=e.te=e.Ft=e.Rt=e.p=e.u=e.h=e.j=e.ee=e.ne=e.oe=e.ie=e.Z=e.I=e.Pt=e.re=e.Wt=e.Dt=e.dt=e.it=e.U=e.tt=e.N=e._=e.ot=e.se=e.T=e.wt=e.ae=e.ce=e.L=e.m=e.Gt=e.M=e.D=e.Xt=e.Y=e.H=e.C=e.Ct=e.le=e.de=e.k=e.V=void 0,
 e.qfs=e.qft=e.qis=e.qit=e.mugThres=e.minMugPerc=e.ue=e.me=void 0
 ;const o=n(3376),i=n(8689)
 ;e.V=()=>document.cookie.split("; ").find((t=>t.startsWith("rfc_v"))).split("=")[1],
@@ -1743,7 +1742,7 @@ e.ce=t=>{const e=["K","M","B","T","Q"];let n=Math.abs(t)
 ;for(let t=0;t<5;t++)if(n/=1e3,!(n>=1e3))return`${+n.toFixed(2)} ${e[t]}`
 },e.ae=t=>{const n=t.toLowerCase();let o=(0,e.m)(n),i=1
 ;return-1!==n.indexOf("k")?i=1e3:-1!==n.indexOf("m")?i=1e6:-1!==n.indexOf("b")?i=1e9:-1!==n.indexOf("t")&&(i=1e12),
-o*=i,o>0?o.toLocaleString("en-US"):""},e.yt=t=>{let e=""
+o*=i,o>0?o.toLocaleString("en-US"):""},e.wt=t=>{let e=""
 ;const n=Math.floor(t/86400),o=Math.floor(t%86400/3600),i=Math.floor(t%3600/60),r=Math.floor(t%3600%60)
 ;return n>0&&(e+=n.toString().padStart(2,"0")+"d "),
 o>0&&(e+=o.toString().padStart(2,"0")+"h "),
@@ -1754,7 +1753,7 @@ r>0&&(e+=r.toString().padStart(2,"0")+"s"),""+e
 },e.ot=(t,e)=>Object.assign(document.createElement(t),e),
 e._=t=>(0,e.ot)("div",t),e.N=t=>(0,e.ot)("span",t),e.tt=t=>(0,e.ot)("button",t),
 e.U=t=>(0,
-e.ot)("li",t),e.it=t=>(0,e.ot)("p",t),e.ut=t=>(0,e.ot)("a",t),e.Dt=t=>(0,
+e.ot)("li",t),e.it=t=>(0,e.ot)("p",t),e.dt=t=>(0,e.ot)("a",t),e.Dt=t=>(0,
 e.ot)("img",t),e.Wt=t=>(0,e.ot)("input",t),e.re=t=>(0,e.ot)("label",t),e.Pt=t=>{
 const{elem:n,title:o,cback:i=()=>{}}=t,r=(0,e.T)(o),s=(0,e._)({
 classList:"nst-box-item"}),a=(0,e.ot)("input",{id:"nst-"+r,type:"text",
@@ -1856,7 +1855,7 @@ const n=t.innerText.split(",").filter((t=>Object.keys(i).includes(t.trim().repla
 const n=parseInt(t.trim().match(/\d+x/)[0]),o=t.trim().replace(/^\d+x /,""),c=Object.values(e).filter((t=>t.name.includes(o)))[0].market_value
 ;s+=n,r+=c*n,a+=n*+i[o]}));const c=`caches: ${s} | BB: ${a} | MV: $`+(0,o.L)(r)
 ;t.appendChild((0,o._)({innerText:c}))})(t,r)))}},9607:(t,e)=>{
-Object.defineProperty(e,"__esModule",{value:!0}),e.rt=void 0,e.rt=(t,e,n=!1)=>{
+Object.defineProperty(e,"__esModule",{value:!0}),e.yt=void 0,e.yt=(t,e,n=!1)=>{
 const o=document?.querySelector(e)
 ;if(o&&(console.log("noobs "+e),t(o),!n))return;let i=!1
 ;const r=new MutationObserver((o=>{o.forEach((o=>{if(i)return
@@ -1875,69 +1874,70 @@ value:"Module"}),Object.defineProperty(t,"__esModule",{value:!0})
 },n.nc=void 0,(()=>{n(4893)
 ;const t=n(6185),e=n(2268),o=n(9607),i=n(276),r=n(1913),s=n(5661),a=n(4051),c=n(3980),l=n(714),d=n(1108),u=n(9149),m=n(7188),p=n(7716),f=n(9355),h=n(2718),b=n(5689),g=n(1379),v=n(8620),w=n(8954),y=n(3424),x=n(763),k=n(3243),_=n(8601),L=n(6215),O=n(3840),M=n(2957),j=n(8292),T=n(263),D=n(291),I=n(4538),S=n(1549),P=n(2470),E=n(1717),A=n(8527),q=n(8990),$=n(8257),z=n(6703),C=n(7673),N=n(7298),R=n(1896),B=n(2585),U=n(3403),F={
 home:()=>{
-(0,t._t)("livenetworth")&&(0,o.rt)(v.ht,'ul.info-cont-wrap [aria-label^="Networth"]'),
-(0,t._t)("effectivestats")&&(0,o.rt)(u.B,".battle")},abro:()=>{
-(0,t._t)("maxbuyabroad")&&(0,o.rt)(y.vt,"body")},trav:()=>{}},H={amarket:()=>{
-(0,t._t)("rwbonus")&&(0,o.rt)(D.zt,"body")},bazaar:()=>{(0,t._t)("rwbonus")&&(0,
-o.rt)(D.zt,"body"),(0,t._t)("bazaarvalue")&&(0,o.rt)(r.v,"#bazaarRoot .wrapper")
+(0,t._t)("livenetworth")&&(0,o.yt)(v.ft,'ul.info-cont-wrap [aria-label^="Networth"]'),
+(0,t._t)("effectivestats")&&(0,o.yt)(u.B,".battle")},abro:()=>{
+(0,t._t)("maxbuyabroad")&&(0,o.yt)(y.gt,"body")},trav:()=>{}},H={amarket:()=>{
+(0,t._t)("rwbonus")&&(0,o.yt)(D.zt,"body")},bazaar:()=>{(0,t._t)("rwbonus")&&(0,
+o.yt)(D.zt,"body"),(0,t._t)("bazaarvalue")&&(0,o.yt)(r.v,"#bazaarRoot .wrapper")
 },city:()=>{},companies:()=>{},displaycase:()=>{},faction:()=>{},gym:()=>{
 (0,t._t)("specialgym")&&((0,
-t.ue)($.nt,"getInitialGymInfo"),(0,t.ue)($.et,"train"))},index:()=>{},item:()=>{
-(0,
-t._t)("equipnoconfirm")&&(0,t.me)(p.G),(0,t._t)("rwbonus")&&(0,o.rt)(D.zt,"body")
-},imarket:()=>{(0,t._t)("marketnoconfirm")&&(0,t.me)(w.gt)},loader:()=>{
-(0,t._t)("intercept")&&"attack"===(0,t.de)()&&(0,t.ue)(P.dt,"attackData")},
+o.yt)($.nt,"#gymroot"),(0,t.ue)($.et,"getInitialGymInfo"),
+(0,t.ue)($.et,"train"))},index:()=>{},item:()=>{
+(0,t._t)("equipnoconfirm")&&(0,t.me)(p.G),
+(0,t._t)("rwbonus")&&(0,o.yt)(D.zt,"body")},imarket:()=>{
+(0,t._t)("marketnoconfirm")&&(0,t.me)(w.bt)},loader:()=>{
+(0,t._t)("intercept")&&"attack"===(0,t.de)()&&(0,t.ue)(P.lt,"attackData")},
 page:()=>{
 (0,t._t)("rrtimeout")&&"russianRoulette"===(0,t.de)()&&(0,t.ue)(R.$t,"russianRouletteData")
 },pmarket:()=>{},profiles:()=>{},search:()=>{},trade:()=>{},all:()=>{
 (0,t._t)("leftalign")&&(0,
-g.ft)(),(0,t._t)("minilastaction")&&(0,t.ue)(E.wt,"UserMiniProfile")},
+g.ut)(),(0,t._t)("minilastaction")&&(0,t.ue)(E.vt,"UserMiniProfile")},
 nopager:()=>{}},G={amarket:()=>{},bazaar:()=>{
-(0,t._t)("bazaarautoprice")&&(0,o.rt)(i.l,"body")},city:()=>{
-(0,t._t)()&&(0,o.rt)(T.qt,"body"),
-(0,t._t)("cityfinds")&&(0,o.rt)(s.O,"#map .leaflet-marker-pane")},
+(0,t._t)("bazaarautoprice")&&(0,o.yt)(i.l,"body")},city:()=>{
+(0,t._t)()&&(0,o.yt)(T.qt,"body"),
+(0,t._t)("cityfinds")&&(0,o.yt)(s.O,"#map .leaflet-marker-pane")},
 companies:()=>{
-(0,t._t)("ezmoneydeposit")&&(0,o.rt)(f.K,"body"),(0,t._t)("employeela")&&(0,
-o.rt)(m.F,".manage-company"),
-(0,t._t)("companyrestock")&&/stock/.test((0,t.C)())&&(0,o.rt)(a.S,"body")},
+(0,t._t)("ezmoneydeposit")&&(0,o.yt)(f.K,"body"),(0,t._t)("employeela")&&(0,
+o.yt)(m.F,".manage-company"),
+(0,t._t)("companyrestock")&&/stock/.test((0,t.C)())&&(0,o.yt)(a.S,"body")},
 displaycase:()=>{
-(0,t._t)("displaycaseitemid")&&(0,o.rt)(l.$,"ul.dc-list"),(0,t._t)("rwbonus")&&(0,
-o.rt)(D.zt,"ul.display-cabinet")},factions:()=>{
-(0,t._t)("ezmoneydeposit")&&(0,o.rt)(f.K,"body"),
-(0,t._t)(t.qfs)&&(0,o.rt)(h.Tt,"#faction-armoury")},gym:()=>{
-(0,t._t)("")&&(0,o.rt)(z.st,'#gymroot ul[class*="properties"] [class*="strength"]')
+(0,t._t)("displaycaseitemid")&&(0,o.yt)(l.$,"ul.dc-list"),(0,t._t)("rwbonus")&&(0,
+o.yt)(D.zt,"ul.display-cabinet")},factions:()=>{
+(0,t._t)("ezmoneydeposit")&&(0,o.yt)(f.K,"body"),
+(0,t._t)(t.qfs)&&(0,o.yt)(h.Tt,"#faction-armoury")},gym:()=>{
+(0,t._t)("")&&(0,o.yt)(z.rt,'#gymroot ul[class*="properties"] [class*="strength"]')
 },index:()=>{F[(0,t.Vt)()]()},item:()=>{
-(0,t._t)("removeuglyimage")&&(0,o.rt)(j.At,'[class^="itemPreviewWrapper"]',!0),
+(0,t._t)("removeuglyimage")&&(0,o.yt)(j.At,'[class^="itemPreviewWrapper"]',!0),
 (0,
-t._t)("easyloadoutequip")&&(0,o.rt)(d.R,'ul[class^="slots"]'),(0,t._t)(t.qis)&&(0,
-o.rt)(L.It,"div.items-wrap")},imarket:()=>{
-(0,t._t)("marketnoconfirm")&&(0,o.rt)(w.bt,"body")},jailview:()=>{
-(0,t._t)("quickjail")&&(0,o.rt)(O.St,"ul.users-list")},loader:()=>{
+t._t)("easyloadoutequip")&&(0,o.yt)(d.R,'ul[class^="slots"]'),(0,t._t)(t.qis)&&(0,
+o.yt)(L.It,"div.items-wrap")},imarket:()=>{
+(0,t._t)("marketnoconfirm")&&(0,o.yt)(w.ht,"body")},jailview:()=>{
+(0,t._t)("quickjail")&&(0,o.yt)(O.St,"ul.users-list")},loader:()=>{
 (0,t._t)("missionhelper")&&"missions"===(0,
-t.de)()&&(0,o.rt)(x.xt,".giver-cont-wrap"),
+t.de)()&&(0,o.yt)(x.xt,".giver-cont-wrap"),
 (0,t._t)("fighterino")&&"attack"===(0,
-t.de)()&&(0,o.rt)(S.J,'div[class^="playersModelWrap"]'),
+t.de)()&&(0,o.yt)(S.J,'div[class^="playersModelWrap"]'),
 (0,t._t)("targetstatus")&&"attack"===(0,
-t.de)()&&(0,o.rt)(q.Jt,'[class^="playerWindow"] [class*="defender"]')},
+t.de)()&&(0,o.yt)(q.Jt,'[class^="playerWindow"] [class*="defender"]')},
 page:()=>{
-F[(0,t.Vt)()](),(0,t._t)("pokername")&&"holdem"===(0,t.de)()&&(0,o.rt)(C.Mt,"div[class^=players]")
+F[(0,t.Vt)()](),(0,t._t)("pokername")&&"holdem"===(0,t.de)()&&(0,o.yt)(C.Mt,"div[class^=players]")
 },pmarket:()=>{
-(0,t._t)("pointsnoconfirm")&&(0,o.rt)(_.Ot,".users-point-sell"),(0,
-t._t)("pointsmuglight")&&(0,o.rt)(k.Lt,".users-point-sell")},profiles:()=>{
+(0,t._t)("pointsnoconfirm")&&(0,o.yt)(_.Ot,".users-point-sell"),(0,
+t._t)("pointsmuglight")&&(0,o.yt)(k.Lt,".users-point-sell")},profiles:()=>{
 (0,t._t)("idtoname")&&(0,
-o.rt)(b.lt,".user-info-value"),(0,t._t)("hidemedals")&&(0,
-o.rt)(U.ct,".medals-wrapper"),
-(0,t._t)("statspies")&&(0,o.rt)(A.Kt,".user-info-value")},properties:()=>{
-(0,t._t)("ezmoneydeposit")&&(0,o.rt)(f.K,"body")},shops:()=>{
-(0,t._t)("cshopmaxbuy")&&(0,o.rt)(c.P,"body")},trade:()=>{
+o.yt)(b.ct,".user-info-value"),(0,t._t)("hidemedals")&&(0,
+o.yt)(U.st,".medals-wrapper"),
+(0,t._t)("statspies")&&(0,o.yt)(A.Kt,".user-info-value")},properties:()=>{
+(0,t._t)("ezmoneydeposit")&&(0,o.yt)(f.K,"body")},shops:()=>{
+(0,t._t)("cshopmaxbuy")&&(0,o.yt)(c.P,"body")},trade:()=>{
 (0,t._t)("tradevalue")&&(0,
-o.rt)(I.Yt,"#trade-container .trade-cont"),(0,t._t)("quickghost")&&(0,
-o.rt)(B.jt,"#trade-container .trade-cont .user.left")},war:()=>{
+o.yt)(I.Yt,"#trade-container .trade-cont"),(0,t._t)("quickghost")&&(0,
+o.yt)(B.jt,"#trade-container .trade-cont .user.left")},war:()=>{
 (0,t._t)("warvalue")&&"rankreport"===(0,
-t.le)()&&(0,o.rt)(N.pe,'li[class^="members-bonus-row"]')},all:()=>{
-(0,t._t)("refillreminder")&&(0,o.rt)(M.Et,'[class*="bar"][class*="energy"]')},
+t.le)()&&(0,o.yt)(N.pe,'li[class^="members-bonus-row"]')},all:()=>{
+(0,t._t)("refillreminder")&&(0,o.yt)(M.Et,'[class*="bar"][class*="energy"]')},
 nopager:()=>{}},W={loading:async()=>{
-(0,o.rt)(e.Nt,"#sidebar"),(0,t.Ht)()&&(document.onreadystatechange=()=>W[document.readyState](),
+(0,o.yt)(e.Nt,"#sidebar"),(0,t.Ht)()&&(document.onreadystatechange=()=>W[document.readyState](),
 (H.all??H.nopager)(),(H[(0,t.Ct)()]??H.nopager)(),(0,t.Zt)())},interactive:()=>{
 (0,t.Ht)()&&((G.all??G.nopager)(),(G[(0,t.Ct)()]??G.nopager)())},complete:()=>{
 (0,t.Ht)()}};W[document.readyState]()})()})();
