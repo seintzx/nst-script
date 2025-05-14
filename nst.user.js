@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      1.3.7
+// @version      1.3.8
 // @description  usefull scripts packed as one
 // @licence      GNU GPLv3
 // @author       seintz [2460991]
@@ -1517,12 +1517,11 @@ XMLHttpRequest.prototype.send=function(e){try{
 if(!e)return this._original_send(e);const n=t(e)
 ;console.log("data",e),console.log("new_data",n),this._original_send(n)
 }catch(t){console.error(t),this._original_send(e)}})},e.Jt=(t,n)=>{
-const o=(0,e.St)()?window:unsafeWindow,{fetch:i}=o
-;unsafeWindow.fetch=async(...e)=>{
+const o=(0,e.St)()?window:unsafeWindow,{fetch:i}=o;o.fetch=async(...e)=>{
 const o=await i(...e),r=e[0]?.url||e[0],a=r?.match(/(?<=step=|sid=)(\w+)/g)?.[0]
 ;if(!a||a!==n)return o;let s;try{s=await(o?.clone()?.json())}catch(t){
-return console.error(e,t),o}return t(s),o}},e.Kt=t=>{
-const n=(0,e.St)()?window:unsafeWindow,{WebSocket:o}=n
+return console.error(e,t),o}return console.log("debug fetchMITM",s),t(s),o}
+},e.Kt=t=>{const n=(0,e.St)()?window:unsafeWindow,{WebSocket:o}=n
 ;n.WebSocket=function(...e){const n=new o(...e)
 ;return n.addEventListener("message",t),n}
 },e.minMugPerc=+(0,e.M)("mugperc"),e.mugThres=(0,
