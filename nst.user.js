@@ -1579,8 +1579,8 @@ for(;t.lastChild;)t.removeChild(t.lastChild)
 const{id:n,name:o,quantity:i}=t,s=`/images/items/${n}/medium.png`,a=(0,r.L)({
 classList:"nst-box-btn-div"})
 ;a.setAttribute("data-itemID",n),a.setAttribute("data-qty",i);const d=(0,r.H)({
-id:"nst-quick-use",classList:"nst-box-button"}),u=(0,r.wt)({src:s,alt:o,
-classList:"nst-box-img",onclick:c}),m=(0,r.k)({id:"nst-quick-name",innerText:o
+id:"nst-quick-use",classList:"nst-box-button",onclick:c}),u=(0,r.wt)({src:s,
+alt:o,classList:"nst-box-img"}),m=(0,r.k)({id:"nst-quick-name",innerText:o
 }),p=(0,r.k)({id:"nst-quick-close",classList:"nst-box-close",innerText:"✕",
 onclick:l});d.appendChild(u),d.appendChild(m),d.appendChild(p),a.appendChild(d),
 e.appendChild(a)})(e,t))),new i.default(t,{animation:150,
