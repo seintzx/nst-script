@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      2.1.1
+// @version      2.1.2
 // @author       seintz [2460991]
 // @description  useful scripts packed as one
 // @license      GPL-3.0-or-later
@@ -895,7 +895,7 @@
 	;if(e||!n)return;const i=w({id:"nst-icon",classList:"nst-icon"})
 	;n.insertAdjacentElement("afterbegin",i).addEventListener("click",pn);},pn=()=>{
 	var t,e
-	;const n=null==document?void 0:document.querySelector(".content-wrapper.spring"),i=null==(t=null==n?void 0:n.style)?void 0:t.display
+	;const n=null==document?void 0:document.querySelector(".content-wrapper.summer"),i=null==(t=null==n?void 0:n.style)?void 0:t.display
 	;n.style.display="none"===i?"":"none",
 	null==(e=null==document?void 0:document.getElementById("nst-menu"))||e.remove(),
 	"none"===n.style.display&&fn(n);},fn=t=>{const e=v({id:"nst-menu",
