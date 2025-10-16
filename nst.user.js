@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      2.3.3
+// @version      2.3.4
 // @author       seintz [2460991]
 // @description  useful scripts packed as one
 // @license      GPL-3.0-or-later
@@ -51,7 +51,7 @@
 	;function v(t,n,e=250){return (...o)=>{const i=n??"__default__",r=h.get(i)
 	;r&&clearTimeout(r);const a=window.setTimeout(()=>t(...o),e);h.set(i,a);}}
 	function g(t){return t.length>1?t.sort().join(", "):t[0]||""}
-	const b="Quick Items",y=o(b),w=i(b),k="Quick Faction",x=o(k),L=i(k),S="bars,basic,battlestats,cooldowns,education,icons,money,networth,newevents,newmessages,notifications,perks,personalstats,profile,refills,timestamp,travel",_={
+	const b="Quick Items",y=o(b),w=i(b),k="Quick Faction",x=o(k),L=i(k),S=["bars","basic","battlestats","cooldowns","education","icons","money","networth","newevents","newmessages","notifications","perks","personalstats","profile","refills","timestamp","travel"],_={
 	company:g(["employees"]),market:g(["bazaar"]),torn:g(["items"]),user:g([...S])
 	},T='<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9" /></svg>',M='<svg class="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6" /></svg>',I={
 	apikey:"",armfbonuses:"",armfweapons:"",assaperk:false,aucfbonuses:"",
@@ -226,9 +226,8 @@
 	;return "false"===e&&"false"===o?"home":"true"===e&&"true"===o?"trav":"false"===e&&"true"===o?"abro":`${e}, ${o}`
 	}function wt(t,n,e={}){const o={
 	"Content-Type":"application/x-www-form-urlencoded; charset=UTF-8",
-	"X-Requested-With":"XMLHttpRequest",Origin:"https://www.torn.com",
-	Referer:"https://www.torn.com/item.php",Accept:"*/*"},i=t=>(t=>{try{
-	return JSON.parse(t)}catch{return t}
+	"X-Requested-With":"XMLHttpRequest",Origin:"https://www.torn.com",Accept:"*/*"
+	},i=t=>(t=>{try{return JSON.parse(t)}catch{return t}
 	})(t),r="POST"===t,a=new URL(n,location.href).origin===location.origin,s=r?"string"==typeof e?e:new URLSearchParams(e).toString():void 0,c={
 	method:t,headers:o,credentials:"include",body:s};return new Promise((r,l)=>{
 	if(ut())"GET"===t?PDA_httpGet(n).then(t=>r(i(t.responseText))).catch(l):PDA_httpPost(n,o,e).then(t=>r(i(t.responseText))).catch(l);else if(a)fetch(n,c).then(async t=>{
@@ -453,11 +452,17 @@
 	new MutationObserver(t=>{t.forEach(t=>{Array.from(t.addedNodes).forEach(t=>{
 	var n;if(t instanceof Element)if(t.matches&&t.matches(gn))kn(t);else {
 	const e=null==(n=t.querySelector)?void 0:n.call(t,gn);e&&kn(e);}});});
-	}).observe(t,{childList:true,subtree:true});}(t);}const Ln=[{key:"ezmoneydeposit",
+	}).observe(t,{childList:true,subtree:true});}(t);}const Ln=[{key:"ezdepositcompany",
 	name:"fast deposit",
 	description:"deposit money with a double click (double-click on dollar sign)",
 	onpage:V.Company,category:Z.Company,enabled:false,readyStates:["interactive"],
-	run:()=>nt(xn,Q.ezmoneydeposit)
+	run:()=>nt(xn,Q.ezmoneydeposit)},{key:"ezdepositfaction",name:"fast deposit",
+	description:"deposit money with a double click (double-click on dollar sign)",
+	onpage:V.Faction,category:Z.Faction,enabled:false,readyStates:["interactive"],
+	run:()=>nt(xn,Q.ezmoneydeposit)},{key:"ezdepositproperty",name:"fast deposit",
+	description:"deposit money with a double click (double-click on dollar sign)",
+	onpage:V.Properties,category:Z.Properties,enabled:false,
+	readyStates:["interactive"],run:()=>nt(xn,Q.ezmoneydeposit)
 	}],{reloadone:Sn,reloadtwo:_n,weapon:Tn}=f(),Mn=ft("user2ID")??"",In={primary:1,
 	secondary:2,melee:3,temp:5};let Dn={},On={},En=false,Pn=0;const jn={check:()=>{
 	var t
@@ -577,11 +582,12 @@
 	}(c,l)),d=Object.keys(a).length>1?Object.keys(c>=1.25*l?s:a).join(" and "):(c>=1.25*l?Object.keys(s).filter(t=>Zn[t]===l):Object.keys(a)).join(""),f=c>=1.25*l?"no more than":""
 	;o.innerText=`Gain ${f} ${u} ${d}`;});}function oe(t){!function(t){const n=G({
 	title:"Special Gym",element:t});["one","two"].forEach(t=>{const e=j({
-	id:"nst-spgym-"+t}),o=function(t,n){var e;const o=O("select",{
-	id:`nst-spgym-${t}-sel`,className:"nst-spgym-sel",onchange:n
-	}),i=null==(e=f("spgym"+t))?void 0:e.toString()
+	id:"nst-spgym-"+t}),o=function(t,n){var e
+	;const o=document.querySelector(`nst-spgym-${t}-sel`);if(o)return o
+	;const i=O("select",{id:`nst-spgym-${t}-sel`,className:"nst-spgym-sel",
+	onchange:n}),r=null==(e=f("spgym"+t))?void 0:e.toString()
 	;return Object.entries(te).forEach(([t,n])=>{const e=O("option",{value:t,
-	innerText:n.desc.join()});e.selected=i===t,o.appendChild(e);}),o}(t,ne),i=N({
+	innerText:n.desc.join()});e.selected=r===t,i.appendChild(e);}),i}(t,ne),i=N({
 	id:`nst-spgym-${t}-msg`,classList:"nst-spgym-msg"})
 	;e.appendChild(o),e.appendChild(i),n.appendChild(e);});}(t);}async function ie(t){
 	var e;const o=await t.clone().json()
@@ -1836,45 +1842,45 @@
 	category:Z.Crime,enabled:false,readyStates:["interactive"],run:()=>{
 	null===$a&&($a=setInterval(()=>{const t=location.href
 	;t!==ja&&(ja=t,/disposal/.test(mt())&&(nt(qa,Q.disposalhighlight),
-	clearInterval($a),$a=null));},500));},condition:()=>/crimes/.test(pt())}],za={}
-	;for(const ps of Aa)za[ps.key]={name:ps.name,description:ps.description,
-	onpage:ps.onpage,category:ps.category,enabled:ps.enabled};function Na(){var t,n
-	;console.debug("nst - init default start");const e=f()??{},o={script:{}}
-	;for(const i in za)o.script[i]={...za[i],
-	enabled:(null==(n=null==(t=null==e?void 0:e.script)?void 0:t[i])?void 0:n.enabled)??za[i].enabled
-	};Object.keys(I).forEach(t=>{o[t]=e[t]??I[t];
-	}),m("nstdata"),p(o),console.debug("nst - init default end");}function Ha(t,n,e){
-	return q({id:"nst-"+t,type:"password",classList:"nst-input m-2",maxLength:n,
-	required:true,value:e})}function Ca(t,n=false){
+	clearInterval($a),$a=null));},500));},condition:()=>/crimes/.test(pt())}]
+	;function za(){var t,n;console.debug("nst - init default start");const e={}
+	;for(const r of Aa)e[r.key]={name:r.name,description:r.description,
+	onpage:r.onpage,category:r.category,enabled:r.enabled};const o=f()??{},i={
+	script:{}};for(const r in e)i.script[r]={...e[r],
+	enabled:(null==(n=null==(t=null==o?void 0:o.script)?void 0:t[r])?void 0:n.enabled)??e[r].enabled
+	}
+	;Object.keys(I).forEach(t=>i[t]=o[t]??I[t]),m("nstdata"),p(i),console.debug("nst - init default end");
+	}function Na(t,n,e){return q({id:"nst-"+t,type:"password",
+	classList:"nst-input m-2",maxLength:n,required:true,value:e})}function Ha(t,n=false){
 	const e=document.getElementById("nst-ts-message");var o
 	;e&&((o=e).innerText="",o.classList.remove("text-nstgreen"),
-	e.innerText=t,e.classList.toggle("text-nstgreen",n));}async function Fa(){
+	e.innerText=t,e.classList.toggle("text-nstgreen",n));}async function Ca(){
 	const t=document.getElementById("nst-tsapikey");if(!t)return
-	;const n=t.value.trim();if(19!==n.length)return Ca("Invalid Key Length")
+	;const n=t.value.trim();if(19!==n.length)return Ha("Invalid Key Length")
 	;const e=await Lt({api:n,selection:""})
-	;if(!(null==e?void 0:e.status))return Ca((null==e?void 0:e.error)||"Invalid Key")
-	;try{p({tsapikey:n}),Ca("Key Saved",!0);}catch(o){Ca(o.message||"Unknown error");}
-	}async function Ra(){const t=document.getElementById("nst-apikey");if(!t)return
-	;const n=t.value.trim();if(16!==n.length)return Ca("Invalid Key Length")
+	;if(!(null==e?void 0:e.status))return Ha((null==e?void 0:e.error)||"Invalid Key")
+	;try{p({tsapikey:n}),Ha("Key Saved",!0);}catch(o){Ha(o.message||"Unknown error");}
+	}async function Fa(){const t=document.getElementById("nst-apikey");if(!t)return
+	;const n=t.value.trim();if(16!==n.length)return Ha("Invalid Key Length")
 	;const e=await xt({section:"user",select:"profile",api:n})
-	;if(!(null==e?void 0:e.status))return Ca((null==e?void 0:e.error)||"Invalid Key")
+	;if(!(null==e?void 0:e.status))return Ha((null==e?void 0:e.error)||"Invalid Key")
 	;try{const{t:t,o:o}=vt(e)
-	;if(void 0===t||void 0===o)return Ca("API broken, wait for ched to fix");if(p({
+	;if(void 0===t||void 0===o)return Ha("API broken, wait for ched to fix");if(p({
 	apikey:n
-	}),!gt(e))return m("nstdata"),Ca("You are not allowed, contact seintz[2460991]")
-	;p({userdata:e}),ls(),Ca("Key Saved",!0);}catch(o){Ca(o||"Unknown error");}}
-	async function Ba(){
+	}),!gt(e))return m("nstdata"),Ha("You are not allowed, contact seintz[2460991]")
+	;p({userdata:e}),cs(),Ha("Key Saved",!0);}catch(o){Ha(o||"Unknown error");}}
+	async function Ra(){
 	confirm("Are you sure you want to reset?")&&(m("nstdata"),window.location.reload());
-	}function Ua(t){const n=document.getElementById(t);if(!n)return;n.innerHTML=""
+	}function Ba(t){const n=document.getElementById(t);if(!n)return;n.innerHTML=""
 	;const e=E({href:tt.tornstats+"/settings/general",target:"_blank",
 	innerText:"here",classList:"text-nstmain font-bold"}),o=j({classList:"text-base"
 	});o.innerHTML="Create your TS key ",o.appendChild(e);const i=j({
 	classList:"nst-api-wrap"}),r=j({classList:"nst-block"}).appendChild(H({
 	id:"nst-ts-message",classList:"nst-message"
-	})),a="tsapikey",s=Ha(a,19,(f(a)??"")+""),c=P({id:"nst-tslogin",
-	classList:"torn-btn m-2",innerText:"save",onclick:Fa})
+	})),a="tsapikey",s=Na(a,19,(f(a)??"")+""),c=P({id:"nst-tslogin",
+	classList:"torn-btn m-2",innerText:"save",onclick:Ca})
 	;i.appendChild(o),i.appendChild(r),
-	i.appendChild(s),i.appendChild(c),n.appendChild(i);}function Ga(t){
+	i.appendChild(s),i.appendChild(c),n.appendChild(i);}function Ua(t){
 	const n=document.getElementById(t);if(!n)return;n.innerHTML=""
 	;const e=tt.tornapicustom,o=E({href:tt.tornapisetting,target:"_blank",
 	innerText:"limited",classList:"text-nstyellow font-bold"}),i=E({href:e,
@@ -1883,23 +1889,23 @@
 	;r.innerHTML="Enter a ",r.appendChild(o),r.innerHTML+=" apikey or ",
 	r.appendChild(i),r.innerHTML+=" one ad-hoc";const a=j({classList:"nst-api-wrap"
 	}),s=j({classList:"nst-block"}).appendChild(H({id:"nst-message",
-	classList:"nst-message"})),c="apikey",l=Ha(c,16,(f(c)??"")+""),u=P({
-	id:"nst-login",classList:"torn-btn m-2",innerText:"save",onclick:Ra}),d=P({
-	id:"nst-reset",classList:"torn-btn m-2",innerText:"reset",onclick:Ba})
+	classList:"nst-message"})),c="apikey",l=Na(c,16,(f(c)??"")+""),u=P({
+	id:"nst-login",classList:"torn-btn m-2",innerText:"save",onclick:Fa}),d=P({
+	id:"nst-reset",classList:"torn-btn m-2",innerText:"reset",onclick:Ra})
 	;a.appendChild(r),
 	a.appendChild(s),a.appendChild(l),a.appendChild(u),a.appendChild(d),
-	n.appendChild(a);}function Wa(t,...n){const e=j({classList:"nst-block"
+	n.appendChild(a);}function Ga(t,...n){const e=j({classList:"nst-block"
 	}),o=O("h4",{classList:"nst-block-title",innerText:t})
-	;return e.appendChild(o),n.forEach(t=>e.appendChild(t)),e}function Xa(t,n,e){
+	;return e.appendChild(o),n.forEach(t=>e.appendChild(t)),e}function Wa(t,n,e){
 	const o=j({id:n,classList:"nst-outcome"});o.addEventListener("change",t=>{
 	const n=t.target;n&&"radio"===n.type&&e(n.id);})
 	;const i=document.createDocumentFragment()
-	;return t.forEach(t=>i.appendChild(U(t,n))),o.appendChild(i),o}function Ja(t){
+	;return t.forEach(t=>i.appendChild(U(t,n))),o.appendChild(i),o}function Xa(t){
 	const n=document.getElementById(t);if(!n)return;n.innerHTML=""
 	;const e=document.createDocumentFragment();e.appendChild(function(){
 	const t=document.createDocumentFragment();return R({elem:t,title:"mug threshold"
-	}),Wa("mug threshold",t)
-	}()),e.appendChild(Wa("default outcome",Xa(["leave","mug","hospitalize"],"outcome",t=>p({
+	}),Ga("mug threshold",t)
+	}()),e.appendChild(Ga("default outcome",Wa(["leave","mug","hospitalize"],"outcome",t=>p({
 	outcome:t})),B({id:"nst-hold"},"hold"))),e.appendChild(function(){
 	const t=f("weapon"),n=j({id:"weapon"}),e=document.createDocumentFragment()
 	;return Object.keys(t).forEach(t=>{const n=j({id:t,classList:"list-group-item",
@@ -1908,31 +1914,31 @@
 	const t=f("weapon"),n=["","","",""]
 	;return Object.entries(t).forEach(([t,e])=>n[e]=t),n},set:t=>{
 	const n=t.toArray(),e=f("weapon");n.forEach(t=>e[t]=n.indexOf(t)),p({weapon:e});}
-	}}),Wa("weapon order",n,B({id:"nst-temp"},"use temp first"),B({id:"nst-assaperk"
+	}}),Ga("weapon order",n,B({id:"nst-temp"},"use temp first"),B({id:"nst-assaperk"
 	},"assassinate"),B({id:"nst-executeperk"},"execute"))
 	}()),e.appendChild(function(){const t=j({id:"reload",classList:"nst-outcome"
 	}),n=document.createDocumentFragment();return n.appendChild(B({
 	id:"nst-reloadone"},"primary")),n.appendChild(B({id:"nst-reloadtwo"
-	},"secondary")),t.appendChild(n),Wa("weapon reload",t)}()),n.appendChild(e);}
-	function Ka(t){const n=document.getElementById(t);if(!n)return;n.innerHTML=""
+	},"secondary")),t.appendChild(n),Ga("weapon reload",t)}()),n.appendChild(e);}
+	function Ja(t){const n=document.getElementById(t);if(!n)return;n.innerHTML=""
 	;const e=document.createDocumentFragment()
-	;e.appendChild(Wa("default outcome",Xa(["easy-leave","easy-mug","easy-hospitalize"],"easy-outcome",t=>p({
+	;e.appendChild(Ga("default outcome",Wa(["easy-leave","easy-mug","easy-hospitalize"],"easy-outcome",t=>p({
 	easyoutcome:t.replace(/easy-/g,"")
-	})))),e.appendChild(Wa("default weapon",Xa(["easy-primary","easy-secondary","easy-melee"],"easy-weapon",t=>p({
+	})))),e.appendChild(Ga("default weapon",Wa(["easy-primary","easy-secondary","easy-melee"],"easy-weapon",t=>p({
 	easyweapon:t.replace(/easy-/g,"")})),B({id:"nst-easy-temp"},"use temp first"))),
-	n.appendChild(e);}let Ya=null;function Qa(t){const n=document.getElementById(t)
-	;return n?(n.innerHTML="",n):null}function Va(t,n,e){
+	n.appendChild(e);}let Ka=null;function Ya(t){const n=document.getElementById(t)
+	;return n?(n.innerHTML="",n):null}function Qa(t,n,e){
 	t.className=e,t.innerHTML=`<b>${n}</b>`,t.classList.remove("hidden");}
-	function Za(t){const n=Qa(t);if(!n)return;const e=j({id:"nst-export-wrap",
+	function Va(t){const n=Ya(t);if(!n)return;const e=j({id:"nst-export-wrap",
 	classList:"nst-api-wrap"}),o=E({id:"nst-export-download",innerText:"Download"})
 	;o.classList.add("hidden","text-sm","text-nstmain","m-2");const i=P({
 	id:"nst-export-btn",innerText:"export",classList:"torn-btn m-2",
 	onclick:()=>function(t){const n=JSON.stringify(f())
-	;Ya&&window.URL.revokeObjectURL(Ya),Ya=window.URL.createObjectURL(new Blob([n],{
+	;Ka&&window.URL.revokeObjectURL(Ka),Ka=window.URL.createObjectURL(new Blob([n],{
 	type:"application/json"
-	})),t.setAttribute("href",Ya+"#/nst-export"),t.setAttribute("download","nst-export.json"),
+	})),t.setAttribute("href",Ka+"#/nst-export"),t.setAttribute("download","nst-export.json"),
 	t.classList.remove("hidden");}(o)});e.append(i,o),n.appendChild(e);}
-	function ts(t){const n=Qa(t);if(!n)return;const e=H({})
+	function Za(t){const n=Ya(t);if(!n)return;const e=H({})
 	;e.classList.add("hidden");const o=j({id:"nst-import-wrap",
 	classList:"nst-api-wrap"}),i=q({id:"nst-import-input",type:"file",
 	accept:"application/json",onchange:()=>function(t,n){const e=t.files
@@ -1940,26 +1946,26 @@
 	p(function(t){try{return JSON.parse(t)}catch(n){
 	return console.error("JSON parse error:",n),null}
 	}(""+(null==(e=t.target)?void 0:e.result))),
-	Na(),Va(n,"Import Successful","text-nstgreen");}catch{
-	Va(n,"Import Unsuccessful","text-nstred");}},o.onerror=t=>{
-	Va(n,"Import Unsuccessful","text-nstred"),console.error(t);},o.readAsText(e[0]);
+	za(),Qa(n,"Import Successful","text-nstgreen");}catch{
+	Qa(n,"Import Unsuccessful","text-nstred");}},o.onerror=t=>{
+	Qa(n,"Import Unsuccessful","text-nstred"),console.error(t);},o.readAsText(e[0]);
 	}(i,e)});i.classList.add("hidden");const r=P({id:"nst-import-btn",
 	innerText:"import",classList:"torn-btn m-2",onclick:()=>i.click()})
-	;o.append(r,i,e),n.appendChild(o);}const ns={"Data Storage":"Only locally",
+	;o.append(r,i,e),n.appendChild(o);}const ts={"Data Storage":"Only locally",
 	"Data Sharing":"Nobody",
 	"Purpose of Use":"Optimization / Maintenance but only end user has access",
 	"Key Storage & Sharing":"Stored locally but not shared",
-	"Key Access Level":"Limited or Custom (see below)"};function es(t,n){const e=j({
+	"Key Access Level":"Limited or Custom (see below)"};function ns(t,n){const e=j({
 	classList:"nst-tos-section"});return e.appendChild(O("h4",{
 	classList:"nst-tos-title",innerText:t})),Object.entries(n).forEach(([t,n])=>{
 	const o=j({classList:"nst-tos-row"}),i=O("b",{innerText:t+": "})
 	;o.appendChild(i),o.appendChild(document.createTextNode(n)),e.appendChild(o);}),e
-	}function os(t){const n=document.getElementById(t);if(!n)return;n.innerHTML=""
+	}function es(t){const n=document.getElementById(t);if(!n)return;n.innerHTML=""
 	;const e=document.createDocumentFragment()
-	;e.appendChild(es("Terms of Service",ns)),
-	e.appendChild(es("Api usage",_)),n.appendChild(e);}
-	const is=["spring","summer","autumn","winter"];function rs(){
-	const t=is.map(t=>document.querySelector(".content-wrapper."+t)).find(Boolean)
+	;e.appendChild(ns("Terms of Service",ts)),
+	e.appendChild(ns("Api usage",_)),n.appendChild(e);}
+	const os=["spring","summer","autumn","winter"];function is(){
+	const t=os.map(t=>document.querySelector(".content-wrapper."+t)).find(Boolean)
 	;if(!t)return;const n=document.getElementById("nst-menu");n&&n.remove()
 	;const e="none"===t.style.display;t.style.display=e?"":"none",e||function(t){
 	const n=document.createDocumentFragment(),e=j({id:"nst-menu",
@@ -1970,16 +1976,16 @@
 	r.appendChild(a),
 	o.appendChild(i),o.appendChild(r),e.appendChild(o),n.appendChild(e),
 	t.insertAdjacentElement("beforebegin",n.firstChild),
-	as(a,"tos",os),as(a,"api",Ga),function(t){
+	rs(a,"tos",es),rs(a,"api",Ua),function(t){
 	const n=t.querySelector("#nst-api-li"),e=t.querySelector("#nst-api")
 	;null==n||n.classList.add("nst-menu-sel"),
 	null==e||e.classList.add("nst-menu-active"),
-	null==e||e.classList.toggle("hidden");}(r),ls();}(t);}function as(t,n,e=()=>{}){
+	null==e||e.classList.toggle("hidden");}(r),cs();}(t);}function rs(t,n,e=()=>{}){
 	const o=null==t?void 0:t.parentElement;if(!o)return;const i="nst-"+n,r=i+"-li"
 	;if(o.querySelector("#"+i)||o.querySelector("#"+r))return;const a=z({id:r,
-	classList:"nst-menu-page",innerText:n,onclick:ss})
+	classList:"nst-menu-page",innerText:n,onclick:as})
 	;t.appendChild(a),o.appendChild(j({id:i,classList:"nst-menu-item hidden"})),e(i);
-	}function ss(t){
+	}function as(t){
 	const n=t.target,e=n.id,o=null==n?void 0:n.closest("#nst-menu-body")
 	;if(!o)return
 	;const i=o.querySelector(".nst-menu-sel"),r=o.querySelector(".nst-menu-active"),a=o.querySelector("#"+e.replace(/-li/g,""))
@@ -1987,7 +1993,7 @@
 	r&&(r.classList.remove("nst-menu-active"),
 	r.classList.toggle("hidden")),n.classList.add("nst-menu-sel"),
 	a&&(a.classList.add("nst-menu-active"),a.classList.toggle("hidden"));}
-	function cs(t){const n=document.getElementById(t);if(!n)return;n.innerHTML=""
+	function ss(t){const n=document.getElementById(t);if(!n)return;n.innerHTML=""
 	;const e=t.replace(/nst-/g,""),i=f("script"),a=Object.keys(i).sort().reduce((t,n)=>{
 	var o
 	;return (null==(o=null==i?void 0:i[n])?void 0:o.category)===e&&(t[n]=null==i?void 0:i[n]),
@@ -2002,22 +2008,22 @@
 	}),l=A({innerText:n,htmlFor:null==t?void 0:t.id,title:e})
 	;return i.appendChild(c),i.appendChild(l),i}({id:"nst-"+i,value:i
 	},e,n.description.toLowerCase());c.appendChild(a);
-	}),s.appendChild(c),n.appendChild(s);}function ls(){if(!gt())return;Na()
-	;const t=document.querySelector("#nst-ul-main");if(!t)return;const n={tsapi:Ua,
-	attack:Ja,"easy-fight":Ka,export:Za,import:ts}
-	;Object.keys(n).forEach(e=>as(t,e,n[e]))
+	}),s.appendChild(c),n.appendChild(s);}function cs(){if(!gt())return;za()
+	;const t=document.querySelector("#nst-ul-main");if(!t)return;const n={tsapi:Ba,
+	attack:Xa,"easy-fight":Ja,export:Va,import:Za}
+	;Object.keys(n).forEach(e=>rs(t,e,n[e]))
 	;const e=f("script"),o=Object.keys(e).sort().reduce((t,n)=>(t[n]=null==e?void 0:e[n],
 	t),{})
-	;Array.from(new Set(Object.values(o).map(t=>t.category).filter(Boolean))).sort().forEach(n=>as(t,n,cs));
-	}function us(t){if(document.getElementById("nst-icon"))return
+	;Array.from(new Set(Object.values(o).map(t=>t.category).filter(Boolean))).sort().forEach(n=>rs(t,n,ss));
+	}function ls(t){if(document.getElementById("nst-icon"))return
 	;const n=t.querySelector('ul[class^="status-icon"]');if(!n)return;const e=z({
 	id:"nst-icon",classList:"nst-icon"})
-	;n.insertBefore(e,n.firstChild),e.addEventListener("click",rs);}
-	const ds=window.location.pathname.replace(/^\//,"").replace(/\.php$/,""),fs={
+	;n.insertBefore(e,n.firstChild),e.addEventListener("click",is);}
+	const us=window.location.pathname.replace(/^\//,"").replace(/\.php$/,""),ds={
 	loading:()=>{
-	nt(D,"head"),nt(us,"#sidebar"),gt()&&(document.onreadystatechange||(document.onreadystatechange=()=>{
-	const t=document.readyState;fs[t]&&fs[t]();}),st(ds,"loading"),kt());},
-	interactive:()=>{gt()&&st(ds,"interactive");},complete:()=>{st(ds,"complete");}}
-	;fs[document.readyState]&&fs[document.readyState]();}();
+	nt(D,"head"),nt(ls,"#sidebar"),gt()&&(document.onreadystatechange||(document.onreadystatechange=()=>{
+	const t=document.readyState;ds[t]&&ds[t]();}),st(us,"loading"),kt());},
+	interactive:()=>{gt()&&st(us,"interactive");},complete:()=>{st(us,"complete");}}
+	;ds[document.readyState]&&ds[document.readyState]();}();
 
 })();
