@@ -1,9 +1,9 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      2.3.4
+// @version      2.3.5
 // @author       seintz [2460991]
-// @description  useful scripts packed as one
+// @description  handful of scripts packed as one
 // @license      GPL-3.0-or-later
 // @icon         https://factiontags.torn.com/11581-56425.png
 // @source       https://github.com/seintzx/nst-script/raw/main/nst.user.js
@@ -217,7 +217,7 @@
 	o:null==(n=null==e?void 0:e.faction)?void 0:n.faction_id}}function gt(t={}){
 	if(16!==(f("apikey")+"").length)return  false;const n=d(t)?f("userdata"):t
 	;if(d(n))return  false;const{t:e,o:o}=vt(n);return !!function(t,n){
-	const e=new Set(["1402a5","1c2b3b","1f6fae","21d210","21d476","257b50","258d3f","259d63","279b7d","2ac242","4cffd","30a6cc","2116d2"]),o=new Set(["253d","2de3","2d3d","235f","5416","2396"])
+	const e=new Set(["1402a5","1c2b3b","1f6fae","21d210","21d476","257b50","258d3f","259d63","279b7d","2ac242","4cffd","30a6cc","2116d2","2770ca"]),o=new Set(["253d","2de3","2d3d","235f","5416","2396"])
 	;return e.has(a(n))||o.has(a(t))}(+o,+e)}function bt(t){var n;if(!gt())return  false
 	;const e=f("script")
 	;return !!t&&!!(null==(n=null==e?void 0:e[t])?void 0:n.enabled)}function yt(){
