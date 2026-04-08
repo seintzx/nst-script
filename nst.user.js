@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      2.3.7
+// @version      2.3.8
 // @author       seintz [2460991]
 // @description  handful of scripts packed as one
 // @license      GPL-3.0-or-later
@@ -382,10 +382,10 @@
 	;for(const{stepId:t,handler:r}of en)rn(i)===t&&(o=await r(o));return o
 	},e.fetch.i=true;}en.push({stepId:n,handler:t});}const sn=[{key:"easyfight",
 	name:"easy fight",description:"move attack button above weapon of choice",
-	onpage:V.Loader,category:Z.Fight,enabled:false,readyStates:["loading"],
+	onpage:V.Page,category:Z.Fight,enabled:false,readyStates:["loading"],
 	run:()=>nt(nn,Q.easyfight),condition:()=>"attack"===pt()},{key:"easypreattack",
 	name:"show pre-attack button",description:"show fight button before attack",
-	onpage:V.Loader,category:Z.Fight,enabled:false,readyStates:["loading"],
+	onpage:V.Page,category:Z.Fight,enabled:false,readyStates:["loading"],
 	run:()=>an(tn,"attackData"),condition:()=>"attack"===pt()}];function cn(t){
 	const n=t.currentTarget.closest('li[class^="slot"]');if(!n)return
 	;const e=n.querySelector('header [aria-label^="Equip"]');e&&e.click();}
@@ -511,20 +511,19 @@
 	console.debug(t),En=t,Pn=t.DB;const e=Nn();n.innerText=qn[e](),n.disabled=!1;
 	}(await t.clone().json(),n);}catch(a){console.error(a);}}function Fn(t){
 	!function(t){const n=G({title:"fighterino",element:t})
-	;n.classList.remove("nst-box-row"),n.classList.add("nst-box-column")
-	;const e=function(){const t=j({classList:"nst-box-column"}),n=j({
-	classList:"nst-outcome",onchange:zn}),e=j({classList:"nst-outcome"})
-	;return n.appendChild(U("leave","outcome")),
-	n.appendChild(U("mug","outcome")),n.appendChild(U("hospitalize","outcome")),
-	e.appendChild(B({id:"nst-hold"},"hold")),e.appendChild(B({id:"nst-temp"
-	},"use temp first")),e.appendChild(B({id:"nst-assaperk"
-	},"assassinate")),e.appendChild(B({id:"nst-executeperk"
+	;n.classList.add("nst-box-column");const e=function(){const t=j({
+	classList:"nst-box-column"}),n=j({classList:"nst-outcome",onchange:zn}),e=j({
+	classList:"nst-outcome"})
+	;return n.appendChild(U("leave","outcome")),n.appendChild(U("mug","outcome")),
+	n.appendChild(U("hospitalize","outcome")),e.appendChild(B({id:"nst-hold"
+	},"hold")),e.appendChild(B({id:"nst-temp"},"use temp first")),e.appendChild(B({
+	id:"nst-assaperk"},"assassinate")),e.appendChild(B({id:"nst-executeperk"
 	},"execute")),t.appendChild(n),t.appendChild(e),t}(),o=j({
 	classList:"nst-box-column"}),i=P({id:"nst-fighteroo",classList:"torn-btn m-2",
 	innerText:"fighterino",onclick:Cn})
 	;o.appendChild(i),n.appendChild(e),n.appendChild(o);}(t);}const Rn=[{
 	key:"fighterino",name:"fighterino",description:"single button for fights",
-	onpage:V.Loader,category:Z.Fight,enabled:false,readyStates:["interactive"],
+	onpage:V.Page,category:Z.Fight,enabled:false,readyStates:["interactive"],
 	run:()=>nt(Fn,Q.fighterino),condition:()=>"attack"===pt()}],Bn={Argentina:167,
 	Canada:41,"Cayman Islands":35,China:242,Hawaii:134,Japan:225,Mexico:26,
 	"South Africa":297,Switzerland:175,UAE:271,"United Kingdom":159},Un={standard:1,
