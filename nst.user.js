@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      2.3.9
+// @version      2.3.10
 // @author       seintz [2460991]
 // @description  handful of scripts packed as one
 // @license      GPL-3.0-or-later
@@ -142,8 +142,8 @@
 	disposalhighlight:'div[class^="virtualList"]',
 	depositDollaSel:".deposit-box .input-money-symbol, .deposit .input-money-symbol",
 	depositMutSelector:".deposit-box .input-money-symbol, .deposit .input-money-symbol, .donate .input-money-symbol",
-	depsoitHandlerSelector:'.deposit-box input[value="DEPOSIT"], .deposit button.torn-btn, #armoury-donate .cash button',
-	depositArmorySelector:"#armoury-donate .cash-confirm .yes",
+	depsoitHandlerSelector:'.deposit-box input[value="DEPOSIT"], .deposit button.torn-btn, .armoury-donate-wrap .cash button',
+	depositArmorySelector:".armoury-donate-wrap .cash-confirm .yes",
 	pokerNameSelector:"p[class^=name]",
 	interceptSelector:'ul[class^="participants"] div[class^="playerWrap"] > span[class^="playername"]',
 	minilastaction:'#profile-mini-root [class*="profile-mini-_userProfileWrapper"] span.last-action-desc',
@@ -506,7 +506,7 @@
 	;if(x[t]())return On[t];$n++;}while($n<3);return 999}async function Cn(t){
 	const n=t.target;n.disabled=true;const e=Nn(),o=An[e]()
 	;if("start"===e&&(jn=true),d(o))return
-	;const i="https://www.torn.com/loader.php?sid=attackData&mode=json&rfcv="+dt(),r={
+	;const i="https://www.torn.com/page.php?sid=attackData&mode=json&rfcv="+dt(),r={
 	method:"POST",headers:{"x-requested-with":"XMLHttpRequest"},
 	body:new URLSearchParams(o)};try{const t=await fetch(i,r);!function(t,n){
 	console.debug(t),En=t,Pn=t.DB;const e=Nn();n.innerText=qn[e](),n.disabled=!1;
@@ -1667,7 +1667,7 @@
 	description:"display rw weapon bonus over the item instead of tooltip",
 	onpage:V.Items,category:Z.Items,enabled:false,readyStates:["loading"],
 	run:()=>nt(Kr,Q.rwbonusitems)}],Qr=ft("XID"),Vr=vt().t,Zr={them:{},you:{}
-	},ta=bt("statspiesavg"),na=[7,31],ea=["Stat","Them","You"],oa=["xantaken","refills","useractivity","criminaloffenses","rankedwarhits","enerydrinkyused"],ia=["Strength","Defense","Speed","Dexterity","Total"],ra="nst-table-cell nst-table-cell-head"
+	},ta=bt("statspiesavg"),na=[7,31],ea=["Stat","Them","You"],oa=["xantaken","refills","useractivity","criminaloffenses","rankedwarhits","enerydrinkused"],ia=["Strength","Defense","Speed","Dexterity","Total"],ra="nst-table-cell nst-table-cell-head"
 	;function aa(t,n){
 	return "useractivity"===t?(n/60).toFixed(2)+" min":""+n.toFixed(2)}
 	function sa(t,n){return t>n?"text-nstred":t<n?"text-nstgreen":"text-nsttorntext"
