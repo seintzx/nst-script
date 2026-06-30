@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         nst
 // @namespace    seintz.torn.nst
-// @version      2.3.11
+// @version      2.3.12
 // @author       seintz [2460991]
 // @description  handful of scripts packed as one
 // @license      GPL-3.0-or-later
@@ -201,7 +201,7 @@
 	;const{old:o,new:i}=t,r=null==(n=null==i?void 0:i.notifications)?void 0:n.events,a=null==(e=null==o?void 0:o.notifications)?void 0:e.events
 	;0!==r&&r!==a&&ct({title:"NST: New Event",
 	text:`You have ${r} new event${1===r?"":"s"}.`});}(t)
-	}],ut=new Set(["1402a5","1c2b3b","1f6fae","21d210","21d476","257b50","258d3f","259d63","279b7d","2ac242","4cffd","30a6cc","2116d2","2770ca"]),dt=new Set(["253d","2de3","2d3d","235f","5416","2396"])
+	}],ut=new Set(["1402a5","1c2b3b","1f6fae","21d210","21d476","257b50","258d3f","259d63","279b7d","2ac242","4cffd","30a6cc","2116d2","2770ca"]),dt=new Set(["253d","2de3","2d3d","235f","5416","5015"])
 	;function ft(t){return Object.fromEntries(t.split("&").map(t=>{
 	const[n,e]=t.split("=");return [n,e]}))}function pt(){
 	return void 0!==window.flutter_inappwebview}function mt(){var t
@@ -2002,8 +2002,8 @@
 	t),{})
 	;Array.from(new Set(Object.values(o).map(t=>t.category).filter(Boolean))).sort().forEach(n=>ss(t,n,ls));
 	}function ds(t){if(document.getElementById("nst-icon"))return
-	;const n=t.querySelector('ul[class^="status-icon"]');if(!n)return;const e=z({
-	id:"nst-icon",classList:"nst-icon"})
+	;const n=t.querySelector('ul[class^="statusIcons"]')||t.querySelector('ul[class^="status-icons"]')
+	;if(!n)return;const e=z({id:"nst-icon",classList:"nst-icon"})
 	;n.insertBefore(e,n.firstChild),e.addEventListener("click",as);}
 	const fs=window.location.pathname.replace(/^\//,"").replace(/\.php$/,""),ps={
 	loading:()=>{
